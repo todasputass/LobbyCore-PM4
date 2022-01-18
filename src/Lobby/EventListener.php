@@ -17,7 +17,7 @@ class EventListener implements Listener {
         $event->setJoinMessage("§7[§2+§7] " . $player->getName());
         $player->sendTitle("§l§6Welcome");
         $player->sendSubTitle("§6Welcome " . $player->getName());
-        $player->setGamemode(GameMode::SURVIVAL());
+        $player->setGamemode(GameMode::ADVENTURE());
         $player->setHealth($player->getMaxHealth());
         $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
         $player->teleport(new Location(0, 100, 0,);
