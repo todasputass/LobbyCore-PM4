@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Lobby;
 
@@ -11,6 +11,7 @@ use pocketmine\item\ItemIds;
 use pocketmine\player\GameMode;
 use pocketmine\player\Player;
 use pocketmine\entity\Location;
+use pocketmine\event\player\PlayerInteractEvent;
 
 class EventListener implements Listener {
 
@@ -25,9 +26,22 @@ class EventListener implements Listener {
         $player->setHealth($player->getMaxHealth());
         $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
     }
-                          
+
     public function onQuit(PlayerQuitEvent $event) : void {
         $player = $event->getPlayer();
         $event->setQuitMessage("§7[§c-§7] " . $player->getName());
     }
+
+    public function interact(PlayerInteractEvent $event) : void{
+        $player = $event->getPlayer();
+        $name = $event->getItem()->getCustomName();
+        if ($name) {
+            switch ($name) {
+                case "§l§r§6Servers":
+                    $player->sendMessage("Agregar Funcion que Abre UI");
+                    break;
+            }
+        }
+    }
+
 }
