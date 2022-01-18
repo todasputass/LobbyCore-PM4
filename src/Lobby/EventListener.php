@@ -24,7 +24,6 @@ class EventListener implements Listener {
         $player->setGamemode(GameMode::ADVENTURE());
         $player->setHealth($player->getMaxHealth());
         $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
-        $player->teleport(new Location(0, 100, 0));
     }
                           
     public function onQuit(PlayerQuitEvent $event) : void {
