@@ -7,6 +7,10 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
+use pocketmine\item\ItemIds;
+use pocketmine\player\GameMode;
+use pocketmine\player\Player;
+use pocketmine\entity\Location;
 
 class EventListener implements Listener {
 
@@ -20,8 +24,9 @@ class EventListener implements Listener {
         $player->setGamemode(GameMode::ADVENTURE());
         $player->setHealth($player->getMaxHealth());
         $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
-        $player->teleport(new Location(0, 100, 0,);
+        $player->teleport(new Location(0, 100, 0));
     }
+                          
     public function onQuit(PlayerQuitEvent $event) : void {
         $player = $event->getPlayer();
         $event->setQuitMessage("§7[§c-§7] " . $player->getName());
