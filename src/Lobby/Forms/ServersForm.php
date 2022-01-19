@@ -12,20 +12,14 @@ use Lobby\Main;
 
 class ServersForm extends SimpleForm {
 
-	public function __construct() {
-		parent::__construct("Servers Selector", "Choose a option");
-		$data = Main::getInstance()->getConfig()->get('servers')['server1'];
-		$this->addButton(new Button($data['server-name']), function(Player $player, int $index) {
-			$data = Main::getInstance()->getConfig()->get('servers')['server1'];
-			$player->transfer($data['ip'], (int) $data['port']);
-
-		});
-		$data = Main::getInstance()->getConfig()->get('servers')['server2'];
-		$this->addButton(new Button($data['server-name']), function(Player $player, int $index) {
-			$data = Main::getInstance()->getConfig()->get('servers')['server2'];
-			$player->transfer($data['ip'], (int) $data['port']);
-		});
-	}
-
+	public function __construct() 
+{
+  parent::__construct("Server Selector", "Choose a option")
+  $servers = Main::getInstance()->getConfig()->get('servers.available');
+  foreach($servers as $server) {
+    $this->addButton(new Button($server["server"] . "\nClick to join"), function(Player $player, int $index){
+        $address = explode(":", $server["address"]);
+        $player->transfer($address[0], $address[1], "Transfer to" {$server["server"});
+    });
+  }
 }
-

@@ -2,15 +2,10 @@
 
 Server-Name: LobbyCore
 
-servers:
-  server1:
-    server-name: 'Premian'
-    ip: 'play.premian.net'
-    port: 19132
-  
-  server2:
-    server-name: 'Greek'
-    ip: 'play.premian.net'
-    port: 19132
+servers.available: # Servidores
+  - server: "HCF"
+    address: "play.greekmc.net:19132"
+  - server: "Practice"
+    address: "play.greekmc.net:19132"
 
 ScoreBoardTitle: Test
