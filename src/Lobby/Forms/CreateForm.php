@@ -10,7 +10,7 @@ class CreateForm extends SimpleForm {
 
     public function __construct() {
 
-            parent::construc("Servers");
+            parent::__construct("Servers");
             $this->addButton(new Button ('HCF'));
 
     }
