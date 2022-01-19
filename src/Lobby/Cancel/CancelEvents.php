@@ -2,6 +2,10 @@
 
 namespace Lobby\Cancel;
 
+use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerExhaustEvent;
+use pocketmine\event\entity\EntityDamageEvent;
+
 class CancelEvents implements Listener {
 
     public function onExhaust(PlayerExhaustEvent $event): void {
