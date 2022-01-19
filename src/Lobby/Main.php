@@ -12,6 +12,8 @@ public function onEnable() : void
 $this->GetServer()->getPluginManager()->registerEvents(new EventListener(), $this);
 $this->GetLogger()->info("LobbyCore Enabled");
 
+$this->saveDefaultConfig();
+
 }
 
 }
