@@ -20,7 +20,6 @@ class EventListener implements Listener {
         $player = $event->getPlayer();
         $player->getInventory()->setItem(4, ItemFactory::getInstance()->get(ItemIds::COMPASS)->setCustomName("§l§r§6Servers"));
         $event->setJoinMessage("§7[§2+§7] " . $player->getName());
-        $player->sendTitle("§l§6Welcome");
         $player->sendSubTitle("§6Welcome " . $player->getName());
         $player->setGamemode(GameMode::ADVENTURE());
         $player->setHealth($player->getMaxHealth());
