@@ -11,8 +11,7 @@ use pocketmine\level\sound\GhastShootSound;
 use pocketmine\event\Listener;
 use pocketmine\utils\SingletonTrait;
 
-class Main extends PluginBase implements Listener
-{
+class Main extends PluginBase implements Listener {
     use SingletonTrait;
 
     protected function onLoad() : void {
@@ -26,7 +25,7 @@ class Main extends PluginBase implements Listener
         $this->saveResource("config.yml");
     }
 
-    public function onJoin(PlayerJoinEvent $event){
+    public function onJoin(PlayerJoinEvent $event) {
         $player = $event->getPlayer(); 
         $player->sendTitle($this->getConfig()->get("Server-Name"));
     }

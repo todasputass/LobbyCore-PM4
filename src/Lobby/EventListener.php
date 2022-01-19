@@ -46,7 +46,7 @@ class EventListener implements Listener {
         }
     }
 
-    public function rightclick(PlayerItemUseEvent $event) : void{
+    public function rightclick(PlayerItemUseEvent $event) : void {
         $player = $event->getPlayer();
         $name = $event->getItem()->getCustomName();
         if ($name) {
@@ -57,5 +57,4 @@ class EventListener implements Listener {
             }
         }
     }
-
 }
