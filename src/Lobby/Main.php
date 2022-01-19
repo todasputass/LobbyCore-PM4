@@ -13,7 +13,8 @@ $this->GetServer()->getPluginManager()->registerEvents(new EventListener(), $thi
 $this->GetLogger()->info("LobbyCore Enabled");
 
 $this->saveDefaultConfig();
-
+    $this->getConfig()->get("Server-Name");
+    $this->getConfig()->get("Join-Title");
 }
 
 

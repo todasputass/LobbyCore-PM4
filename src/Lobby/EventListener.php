@@ -27,8 +27,6 @@ class EventListener implements Listener {
         $player->setHealth($player->getMaxHealth());
         $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
 
-        $this->getConfig()->get("Server-Name");
-        $this->getConfig()->get("Join-Title");
 
 
     }
