@@ -29,5 +29,14 @@ class Main extends PluginBase implements Listener {
         $player = $event->getPlayer(); 
         $player->sendTitle($this->getConfig()->get("Server-Name"));
     }
+    public function onExhaust(PlayerExhaustEvent $event): void {
+        $event->setCancelled(true);
+    }
+
+    public function onDamage((EntityDamageEvent $event) {
+        if($event->getCause() === EntityDamageEvent::CAUSE_FALL) {
+            $event->setCancelled(true);
+        }
+    }
 }
 
