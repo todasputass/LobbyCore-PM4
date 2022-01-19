@@ -9,10 +9,17 @@ use pocketmine\Player;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\level\sound\GhastShootSound;
 use pocketmine\event\Listener;
+use pocketmine\utils\SingletonTrait;
 
 class Main extends PluginBase implements Listener
 {
-    public function onEnable() : void {
+    use SingletonTrait;
+
+    protected function onLoad() : void {
+        self::setInstance($this);
+    }
+
+    protected function onEnable() : void {
         $this->GetServer()->getPluginManager()->registerEvents(new EventListener(), $this);
         $this->GetLogger()->info("LobbyCore Enabled");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
