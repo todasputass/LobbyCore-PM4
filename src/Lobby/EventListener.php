@@ -26,8 +26,6 @@ class EventListener implements Listener {
         $player->setHealth($player->getMaxHealth());
         $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
 
-
-
     }
 
     public function onQuit(PlayerQuitEvent $event) : void {
