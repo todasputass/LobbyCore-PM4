@@ -13,7 +13,7 @@ use pocketmine\player\Player;
 use pocketmine\entity\Location;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
-use Lobby\Forms\CreateForm;
+use Lobby\Forms\ServersForm;
 
 class EventListener implements Listener {
 
@@ -39,7 +39,7 @@ class EventListener implements Listener {
         if ($name) {
             switch ($name) {
                 case "§l§r§6Servers":
-                    $player->sendForm(new CreateForm());
+                    $player->sendForm(new ServersForm());
                     break;
             }
         }
@@ -51,7 +51,7 @@ class EventListener implements Listener {
         if ($name) {
             switch ($name) {
                 case "§l§r§6Servers":
-                    $player->sendForm(new CreateForm());
+                    $player->sendForm(new ServersForm());
                     break;
             }
         }
