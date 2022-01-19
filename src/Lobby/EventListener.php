@@ -16,8 +16,7 @@ use pocketmine\event\player\PlayerItemUseEvent;
 
 class EventListener implements Listener {
 
-    public function onJoin(PlayerJoinEvent $event) : void
-    {
+    public function onJoin(PlayerJoinEvent $event) : void {
         $player = $event->getPlayer();
         $player->getInventory()->setItem(4, ItemFactory::getInstance()->get(ItemIds::COMPASS)->setCustomName("§l§r§6Servers"));
         $event->setJoinMessage("§7[§2+§7] " . $player->getName());
@@ -36,7 +35,7 @@ class EventListener implements Listener {
         $event->setQuitMessage("§7[§c-§7] " . $player->getName());
     }
 
-    public function interact(PlayerInteractEvent $event) : void{
+    public function interact(PlayerInteractEvent $event) : void {
         $player = $event->getPlayer();
         $name = $event->getItem()->getCustomName();
         if ($name) {
