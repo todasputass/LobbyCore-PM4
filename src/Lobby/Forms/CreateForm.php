@@ -8,7 +8,7 @@ use jojoe77777\FormAPI\entries\simple\Button;
 
 class CreateForm extends SimpleForm {
 
-    public function __construct() {
+    public function __construct(Player $inviter) {
 
         if($inviter instanceof Player) {
 
