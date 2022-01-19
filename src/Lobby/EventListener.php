@@ -26,6 +26,11 @@ class EventListener implements Listener {
         $player->setGamemode(GameMode::ADVENTURE());
         $player->setHealth($player->getMaxHealth());
         $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
+
+        $this->getConfig()->get("Server-Name");
+        $this->getConfig()->get("Join-Title");
+
+
     }
 
     public function onQuit(PlayerQuitEvent $event) : void {
