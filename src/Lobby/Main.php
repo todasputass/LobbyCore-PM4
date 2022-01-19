@@ -17,7 +17,6 @@ class Main extends PluginBase implements Listener
         $this->GetLogger()->info("LobbyCore Enabled");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->saveResource("config.yml");
-        $this->getConfig = new Config($this->getDataFolder() . "config.yml", Config::YAML);
     }
 
     public function onJoin(PlayerJoinEvent $event){
