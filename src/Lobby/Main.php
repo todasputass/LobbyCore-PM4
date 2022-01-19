@@ -10,6 +10,8 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\level\sound\GhastShootSound;
 use pocketmine\event\Listener;
 use pocketmine\utils\SingletonTrait;
+use pocketmine\event\player\PlayerExhaustEvent;
+use pocketmine\event\entity\EntityDamageEvent;
 
 class Main extends PluginBase implements Listener {
     use SingletonTrait;
@@ -30,12 +32,12 @@ class Main extends PluginBase implements Listener {
         $player->sendTitle($this->getConfig()->get("Server-Name"));
     }
     public function onExhaust(PlayerExhaustEvent $event): void {
-        $event->setCancelled(true);
+        $event->cancel(true);
     }
 
-    public function onDamage((EntityDamageEvent $event) {
+    public function onDamage(EntityDamageEvent $event) {
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL) {
-            $event->setCancelled(true);
+            $event->cancel(true);
         }
     }
 }
