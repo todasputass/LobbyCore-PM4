@@ -8,13 +8,11 @@ use jojoe77777\FormAPI\entries\simple\Button;
 
 class CreateForm extends SimpleForm {
 
-    public function __construct(Player $inviter) {
-
-        if($inviter instanceof Player) {
+    public function __construct() {
 
             parent::construc("Servers");
             $this->addButton(new Button ('HCF'));
-        }
+
     }
 }
 
