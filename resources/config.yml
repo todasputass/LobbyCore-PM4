@@ -1,3 +1,14 @@
 
 
 Server-Name: LobbyCore
+
+servers:
+  server1:
+    ip: 'play.premian.net'
+    port: 19132
+  
+  server2:
+    ip: 'play.premian.net'
+    port: 19132
+
+ScoreBoardTitle: Test
