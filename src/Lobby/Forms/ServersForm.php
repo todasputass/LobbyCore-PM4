@@ -14,12 +14,14 @@ class ServersForm extends SimpleForm {
 
 	public function __construct() {
 		parent::__construct("Servers Selector", "Choose a option");
-		$this->addButton(new Button("HCF\nClick Me!"), function(Player $player, int $index) {
+		$data = Main::getInstance()->getConfig()->get('servers')['server1'];
+		$this->addButton(new Button($data['server-name']), function(Player $player, int $index) {
 			$data = Main::getInstance()->getConfig()->get('servers')['server1'];
 			$player->transfer($data['ip'], (int) $data['port']);
 
 		});
-		$this->addButton(new Button("Practice\nClick Me!"), function(Player $player, int $index) {
+		$data = Main::getInstance()->getConfig()->get('servers')['server2'];
+		$this->addButton(new Button($data['server-name']), function(Player $player, int $index) {
 			$data = Main::getInstance()->getConfig()->get('servers')['server2'];
 			$player->transfer($data['ip'], (int) $data['port']);
 		});
