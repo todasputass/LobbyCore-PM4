@@ -40,7 +40,7 @@ class EventListener implements Listener {
         if ($name) {
             switch ($name) {
                 case "§l§r§6Servers":
-                    $player->sendMessage("Agregar Funcion que Abre UI");
+                    $player->sendForm(new ("HCF"));
                     break;
             }
         }
