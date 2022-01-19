@@ -39,7 +39,7 @@ class EventListener implements Listener {
         if ($name) {
             switch ($name) {
                 case "§l§r§6Servers":
-                    $player->sendForm(new ("Servers"));
+                    $player->sendForm(new (Servers));
                     break;
             }
         }
@@ -51,7 +51,7 @@ class EventListener implements Listener {
         if ($name) {
             switch ($name) {
                 case "§l§r§6Servers":
-                    $player->sendForm(new ("Servers"));
+                    $player->sendForm(new (Servers));
                     break;
             }
         }

@@ -12,7 +12,6 @@ class CreateForm extends SimpleForm {
 
         if($inviter instanceof Player) {
 
-            $name=$inviter->getName();
             parent::construc("Servers");
             $this->addButton(new Button ("HCF"));
         }
