@@ -25,7 +25,7 @@ class Main extends PluginBase {
         # Add a Custom MOTD
         $this->getServer()->getNetwork()->setName($this->getConfig()->get("server-motd"));
         # Register task
-        $this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function (int $currentTick): void {
+        $this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function (): void {
             foreach ($this->getSessionFactory()->getSessions() as $session)
                 $session->update();
         }), 1);
