@@ -22,10 +22,10 @@ scoreboard.title: §6§lGreek §r§f| §7Lobby-1
 scoreboard.lines:
   - ' &7---------------------'
   - ' &6Online:' 
-  - ' &7{players_count}'
+  - ' §r§f{players_count}'
   - '&7&r&b'
   - ' &6Nick:'
-  - ' &7{player_nick}'
+  - ' §r§f{player_nick}'
   - '&7&r'
   - ' &7greekmc.net'
   - ' &7---------------------&r'
