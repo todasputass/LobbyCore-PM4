@@ -27,8 +27,8 @@ class EventListener implements Listener {
         $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
         $player->getInventory()->setItem(4, ItemFactory::getInstance()->get(ItemIds::COMPASS)->setCustomName("§l§r§6Servers"));
         # Welcome title
-        $player->sendTitle(Main::getInstance()->getConfig()->get("Server-Name"));
-        $player->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
+        $player->sendTitle(Main::getInstance()->getConfig()->get("server-name"));
+        $player->teleport($player->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
         $player->sendSubTitle("§6Welcome " . $player->getName());
         # Welcome message
         $event->setJoinMessage("§7[§2+§7] " . $player->getName());
