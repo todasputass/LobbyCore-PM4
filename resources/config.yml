@@ -1,5 +1,7 @@
-# Server data
+# Server Name
 server-name: "§6§lGreekMC"
+
+# Server data
 server-storelink: store.greekmc.net
 server-twitterlink: "@GreekMC"
 server-discordlink: "discord.gg/greekmc"
@@ -22,9 +24,6 @@ scoreboard.lines:
   - ' &6Online:' 
   - ' &7{players_count}'
   - '&7&r&b'
-  - ' &6Ping:' 
-  - ' &7{player_ping}'
-  - '&7&r&a'
   - ' &6Nick:'
   - ' &7{player_nick}'
   - '&7&r'
