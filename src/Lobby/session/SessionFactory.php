@@ -12,29 +12,28 @@ class SessionFactory
 {
     
     /** @var Session[] */
-    private array $sessions = [];
+    static private array $sessions = [];
     
     /**
-     * @return array
+     * @return Session[]
      */
-    public function getSessions(): array
-    {
-        return $this->sessions;
+    static public function getSessions(): array {
+        return self::$sessions;
     }
-    
-    /**
-     * @param Player $player
-     */
-    public function createSession(Player $player): void
-    {
-        $this->sessions[$player->getName()] = new Session($player, SessionScoreboard::create($player, TextFormat::colorize(Main::getInstance()->getConfig()->get('scoreboard.title'))));
+
+    static public function getSession(Player $player): ?Session {
+        return self::$sessions[$player->getName()] ?? null;
     }
-    
-    /**
-     * @param Player $player
-     */
-    public function removeSession(Player $player): void
-    {
-        unset($this->sessions[$player->getName()]);
+
+    static public function createSession(Player $player): void {
+        self::$sessions[$player->getName()] = new Session(
+            $player,
+            SessionScoreboard::create($player, TextFormat::colorize(Main::getInstance()->getConfig()->get('scoreboard.title')))
+        );
     }
+
+    static public function removeSession(Player $player): void {
+        unset(self::$sessions[$player->getName()]);
+    }
+
 }
