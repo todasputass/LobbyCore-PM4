@@ -29,25 +29,7 @@ class Session
     private function init(): void
     {
         $this->scoreboard->init();
-        
-        $this->player->setGamemode(GameMode::fromString('survival'));
-        
-        $this->player->teleport($this->player->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
 
-        $this->player->setHealth(20);
-        
-        $this->player->getHungerManager()->setEnabled(false);
-        $this->player->getHungerManager()->setFood(20);
-        
-        $this->player->getArmorInventory()->clearAll();
-        $this->player->getInventory()->clearAll();
-        $this->player->getOffHandInventory()->clearAll();
-        
-        $item = ItemFactory::getInstance()->get(ItemIds::COMPASS);
-        $item->setCustomName(TextFormat::colorize('&l&4Modalities'));
-        $item->setNamedTag($item->getNamedTag()->setString('no_drop', 'modalities'));
-        
-        $this->player->getInventory()->setItem(4, $item);
     }
     
     public function update(): void
