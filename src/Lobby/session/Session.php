@@ -38,7 +38,7 @@ class Session
         
         $this->scoreboard->clear();
         
-        foreach ($config->get('ScoreBoardLines') as $content) {
+        foreach ($config->get('scoreboard.lines') as $content) {
             $content = str_replace(['{players_count}', '{player_ping}'], [count(Main::getInstance()->getServer()->getOnlinePlayers()), $this->player->getNetworkSession()->getPing()], $content);
             $this->scoreboard->addLine(TextFormat::colorize($content));
         }
