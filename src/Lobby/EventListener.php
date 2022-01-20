@@ -2,20 +2,17 @@
 
 namespace Lobby;
 
-use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerExhaustEvent;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerItemUseEvent;
+use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
-use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;
 use pocketmine\player\GameMode;
-use pocketmine\player\Player;
-use pocketmine\entity\Location;
-use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\event\player\PlayerItemUseEvent;
 use Lobby\Forms\ServersForm;
-use pocketmine\event\player\PlayerExhaustEvent;
-use pocketmine\event\entity\EntityDamageEvent;
 
 class EventListener implements Listener {
 
@@ -49,34 +46,36 @@ class EventListener implements Listener {
     public function onInteract(PlayerInteractEvent $event) : void {
         $player = $event->getPlayer();
         $name = $event->getItem()->getCustomName();
-        if ($name) {
-            switch ($name) {
-                case "§l§r§6Servers":
-                    $player->sendForm(new ServersForm());
-                    break;
-            }
+
+        #
+        switch ($name) {
+            case "§l§r§6Servers":
+                $player->sendForm(new ServersForm());
+                break;
         }
     }
 
-    public function rightclick(PlayerItemUseEvent $event) : void {
+    public function onItemUsePlayerItemUseEvent $event) : void {
         $player = $event->getPlayer();
         $name = $event->getItem()->getCustomName();
-        if ($name) {
-            switch ($name) {
-                case "§l§r§6Servers":
-                    $player->sendForm(new ServersForm());
-                    break;
-            }
+
+        #
+        switch ($name) {
+            case "§l§r§6Servers":
+                $player->sendForm(new ServersForm());
+                break;
         }
     }
 
     public function onExhaust(PlayerExhaustEvent $event): void {
-        $event->cancel(true);
+        # Cancel hunger update
+        $event->cancel();
     }
 
     public function onDamage(EntityDamageEvent $event) {
+        # Cancel fall damage
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL) {
-            $event->cancel(true);
+            $event->cancel();
         }
     }
 }
