@@ -30,6 +30,7 @@ class Main extends PluginBase implements Listener {
     public function onJoin(PlayerJoinEvent $event) {
         $player = $event->getPlayer(); 
         $player->sendTitle($this->getConfig()->get("Server-Name"));
+        $player->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
     }
     public function onExhaust(PlayerExhaustEvent $event): void {
         $event->cancel(true);
