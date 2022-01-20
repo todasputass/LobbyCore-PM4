@@ -1,15 +1,19 @@
-      _       ____     _
-    / /     /  _  /  / /
-   / /     / / / /  / /
-  / /___  / /_/ /  / /___
- /_____/ /_____/  /_____/
 
-Server-Name: LobbyCore
+Server-Name: "LobbyCore"
 
-servers.available: # Servidores
+# Servidores settings
+servers.available:
   - server: "HCF"
     address: "play.greekmc.net:19132"
   - server: "Practice"
     address: "play.greekmc.net:19132"
 
-ScoreBoardTitle: Test
+# Scoreboard settings
+ScoreBoard-Title: '&6Server &7| &bHub'
+ScoreBoard-Lines:
+  - '&7------------------'
+  - ' &6Players: &7{players_count}'
+  - ' &6Ping: &7{player_ping}'
+  - '&7------------------&r'
+  - '&3server.net'
+
