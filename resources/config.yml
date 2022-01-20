@@ -16,6 +16,7 @@ servers.available:
     address: "play.greekmc.net:19132"
 
 # Scoreboard settings
+scoreboard.title: §6§lLobbyCore §r§f| §7Lobby-1
 scoreboard.lines:
   - '&7------------------'
   - ' &6Players: &7{players_count}'

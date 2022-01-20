@@ -23,10 +23,10 @@ class EventListener implements Listener {
         $joinMessage = [
             "§r§f-----------------------------",
             "           ".Main::getInstance()->getConfig()->get("server-name"),
-            "§l§4STORE:§r§f ".Main::getInstance()->getConfig()->get("server-storelink"),
+            "§l§bSTORE:§r§f ".Main::getInstance()->getConfig()->get("server-storelink"),
             "§l§bTWITTER:§r§f ".Main::getInstance()->getConfig()->get("server-twitterlink"),
             "§9§lDISCORD:§r§f ".Main::getInstance()->getConfig()->get("server-discordlink"),
-            "§d§lYOUTUBE:§r§f ".Main::getInstance()->getConfig()->get("server-youtubelink"),
+            "§4§lYOUTUBE:§r§f ".Main::getInstance()->getConfig()->get("server-youtubelink"),
             "§r§f-----------------------------"
         ];
         $player->sendMessage(join("\n", $joinMessage));
