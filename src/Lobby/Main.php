@@ -5,6 +5,7 @@ namespace Lobby;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
 use Lobby\session\SessionFactory;
+use pocketmine\event\Listener;
 
 class Main extends PluginBase implements Listener {
     use SingletonTrait;

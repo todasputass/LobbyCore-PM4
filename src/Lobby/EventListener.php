@@ -55,7 +55,7 @@ class EventListener implements Listener {
         }
     }
 
-    public function onItemUsePlayerItemUseEvent $event) : void {
+    public function onItemUse(PlayerItemUseEvent $event) : void {
         $player = $event->getPlayer();
         $name = $event->getItem()->getCustomName();
 
@@ -72,7 +72,7 @@ class EventListener implements Listener {
         $event->cancel();
     }
 
-    public function onDamage(EntityDamageEvent $event : void {
+    public function onDamage(EntityDamageEvent $event) : void {
         # Cancel fall damage
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL) {
             $event->cancel();
