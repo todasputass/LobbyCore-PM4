@@ -23,7 +23,7 @@ class EventListener implements Listener {
         $player = $event->getPlayer();
 
         # Setup session
-        Main::getInstance()->getSessionFactory()->createSession();
+        Main::getInstance()->getSessionFactory()->createSession($player);
         # Setup player
         $player->setGamemode(GameMode::ADVENTURE());
         $player->setHealth($player->getMaxHealth());
