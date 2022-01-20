@@ -11,7 +11,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
-class ServerCommand extends Command {
+class SpawnCommand extends Command {
 
     public function __construct()
     {
@@ -29,7 +29,7 @@ class ServerCommand extends Command {
         return;
 
         if (!isset($args[0])) {
-            $player->teleport($player->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
+            $sender->teleport($sender->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
             return;
         }
     }
