@@ -12,15 +12,20 @@ use pocketmine\event\Listener;
 use pocketmine\utils\SingletonTrait;
 use pocketmine\event\player\PlayerExhaustEvent;
 use pocketmine\event\entity\EntityDamageEvent;
+use Lobby\session\SessionFactory;
 
 class Main extends PluginBase implements Listener {
     use SingletonTrait;
-
-    protected function onLoad() : void {
+    
+    /** @var SessionFactory */
+    private SessionFactory $sessionFactory;
+    
+    protected function onLoad(): void {
         self::setInstance($this);
     }
 
     protected function onEnable() : void {
+        $this->sessionFactory = new SessionFactory;
         $this->GetServer()->getPluginManager()->registerEvents(new EventListener(), $this);
         $this->GetLogger()->info("LobbyCore Enabled");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -40,6 +45,14 @@ class Main extends PluginBase implements Listener {
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL) {
             $event->cancel(true);
         }
+    }
+    
+    /**
+     * @return SessionFactory
+     */
+    public function getSessionFactory(): SessionFactory
+    {
+        return $this->sessionFactory;
     }
 }
 
