@@ -3,11 +3,11 @@
 namespace Lobby;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
 use Lobby\session\SessionFactory;
-use pocketmine\event\Listener;
 
-class Main extends PluginBase implements Listener {
+class Main extends PluginBase {
     use SingletonTrait;
     
     /** @var SessionFactory */
@@ -22,13 +22,18 @@ class Main extends PluginBase implements Listener {
         $this->saveResource("config.yml");
         # Setup session factory
         $this->sessionFactory = new SessionFactory;
+        # Add a Custom MOTD
+        $this->getServer()->getNetwork()->setName($this->getConfig()->get("server-motd"));
+        # Register task
+        $this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function (int $currentTick): void {
+            foreach ($this->getSessionFactory()->getSessions() as $session)
+                $session->update();
+        }), 1);
         # Register event handler
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
         
         # Logger
         $this->getLogger()->info("LobbyCore Enabled");
-        # Add a Custom MOTD
-        $this->getServer()->getNetwork()->setName($this->getConfig()->get("Server-MOTD"));
     }
     
     /**
