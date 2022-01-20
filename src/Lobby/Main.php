@@ -6,7 +6,8 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
 use Lobby\session\SessionFactory;
-
+use Lobby\Commands\SpawnCommand;
+    
 class Main extends PluginBase {
     use SingletonTrait;
     
@@ -31,6 +32,8 @@ class Main extends PluginBase {
         }), 1);
         # Register event handler
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+        # Register commands
+        $this->getServer()->getCommandMap()->register('spawn', new SpawnCommand());
         
         # Logger
         $this->getLogger()->info("LobbyCore Enabled");
