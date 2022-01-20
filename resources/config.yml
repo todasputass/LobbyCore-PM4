@@ -1,5 +1,8 @@
 # Server name
-server-name: "LobbyCore"
+server-name: "§6LobbyCore"
+
+# Server MOTD
+Server-MOTD: "§6Server"
 
 # Servers settings
 servers.available:
@@ -9,7 +12,7 @@ servers.available:
     address: "play.greekmc.net:19132"
 
 # Scoreboard settings
-scoreboard.title: '&6Server &7| &bHub'
+scoreboard.title: '&6Server &f| &7Hub'
 scoreboard.lines:
   - '&7------------------'
   - ' &6Players: &7{players_count}'
