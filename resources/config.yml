@@ -1,4 +1,4 @@
-# Server Data
+# Server data
 server-name: "§6§lLobbyCore"
 server-storelink: store.servermc.net
 server-twitterlink: "@ServerMC"
@@ -6,7 +6,7 @@ server-discordlink: "discord.gg/servermc"
 server-youtubelink: "youtube.com/itoozh"
 
 # Server MOTD
-Server-MOTD: "§6§lLobbyCore"
+server-motd: "§6§lLobbyCore"
 
 # Servers settings
 servers.available:
