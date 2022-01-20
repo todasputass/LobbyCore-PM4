@@ -52,12 +52,12 @@ class Session
     
     public function update(): void
     {
-        $config = LobbyCore::getInstance()->getConfig();
+        $config = Main::getInstance()->getConfig();
         
         $this->scoreboard->clear();
         
-        foreach ($config->get('ScoreBoard-Lines') as $content) {
-            $content = str_replace(['{players_count}', '{player_ping}'], [count(LobbyCore::getInstance()->getServer()->getOnlinePlayers()), $this->player->getNetworkSession()->getPing()], $content);
+        foreach ($config->get('ScoreBoardLines') as $content) {
+            $content = str_replace(['{players_count}', '{player_ping}'], [count(Main::getInstance()->getServer()->getOnlinePlayers()), $this->player->getNetworkSession()->getPing()], $content);
             $this->scoreboard->addLine(TextFormat::colorize($content));
         }
     }

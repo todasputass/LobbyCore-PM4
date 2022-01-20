@@ -27,7 +27,7 @@ class SessionFactory
      */
     public function createSession(Player $player): void
     {
-        $this->sessions[$player->getName()] = new Session($player, SessionScoreboard::create($player, TextFormat::colorize(LobbyCore::getInstance()->getConfig()->get('ScoreBoard-Title'))));
+        $this->sessions[$player->getName()] = new Session($player, SessionScoreboard::create($player, TextFormat::colorize(Main::getInstance()->getConfig()->get('ScoreBoardTitle'))));
     }
     
     /**

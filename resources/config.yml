@@ -9,8 +9,8 @@ servers.available:
     address: "play.greekmc.net:19132"
 
 # Scoreboard settings
-ScoreBoard-Title: '&6Server &7| &bHub'
-ScoreBoard-Lines:
+ScoreBoardTitle: '&6Server &7| &bHub'
+ScoreBoardLines:
   - '&7------------------'
   - ' &6Players: &7{players_count}'
   - ' &6Ping: &7{player_ping}'
