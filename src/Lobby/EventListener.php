@@ -45,16 +45,15 @@ class EventListener implements Listener {
     public function onInteract(PlayerInteractEvent $event) : void {
         $player = $event->getPlayer();
         $name = $event->getItem()->getCustomName();
-        if ($name) {
-            switch ($name) {
-                case "§l§r§6Servers":
-                    $player->sendForm(new ServersForm());
-                    break;
-            }
+
+        switch ($name) {
+            case "§l§r§6Servers":
+                $player->sendForm(new ServersForm());
+                break;
         }
     }
 
-    public function rightclick(PlayerItemUseEvent $event) : void {
+    public function onItemUse(PlayerItemUseEvent $event) : void {
         $player = $event->getPlayer();
         $name = $event->getItem()->getCustomName();
         if ($name) {
