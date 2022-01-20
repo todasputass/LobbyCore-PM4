@@ -13,7 +13,7 @@ use Lobby\Main;
 class ServersForm extends SimpleForm {
     
     public function __construct() {
-        parent::__construct("Server Selector", "Choose a option");
+        parent::__construct("§r§7» §l§6Server Selector §r§7«", "§r§7Select the server you want to transfer to");
         $servers = Main::getInstance()->getConfig()->get('servers.available');
 
         foreach ($servers as $server) { 

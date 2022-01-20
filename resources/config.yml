@@ -6,21 +6,24 @@ server-discordlink: "discord.gg/servermc"
 server-youtubelink: "youtube.com/itoozh"
 
 # Server MOTD
-Server-MOTD: "§6Server"
+Server-MOTD: "§6§lLobbyCore"
 
 # Servers settings
 servers.available:
-  - server: "HCF"
+  - server: "§6§lHCF§r§7 - Server1"
     address: "play.greekmc.net:19132"
-  - server: "Practice"
+  - server: "§6§lPractice§r§7 - Server2"
     address: "play.greekmc.net:19132"
 
 # Scoreboard settings
 scoreboard.title: §6§lLobbyCore §r§f| §7Lobby-1
 scoreboard.lines:
   - '&7------------------'
+  - '&7&7'
   - ' &6Players: &7{players_count}'
   - ' &6Ping: &7{player_ping}'
+  - '&7&r'
+  - '&7server.net'
   - '&7------------------&r'
-  - '&3server.net'
+
 
