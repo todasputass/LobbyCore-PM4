@@ -39,8 +39,14 @@ class EventListener implements Listener {
         # Cancel fall damage
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL) {
             $event->cancel();
+            return;
+        }
+        if($event->getCause() === EntityDamageEvent::CAUSE_VOID) {
+            $player = $event->getEntity();
+            $event->cancel();
+            SessionFactory::getSession($player)->teleportToLobbyWorld();
         }
     }
-
+}
 }
 
