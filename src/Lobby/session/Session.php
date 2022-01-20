@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Lobby\session;
 
-use Lobby\item\ServerSelectorItem;
+use Lobby\item\{ServerSelectorItem, EnderPearlBuffItem};
 use Lobby\Main;
 use pocketmine\player\GameMode;
 use pocketmine\player\Player;
@@ -52,6 +52,7 @@ class Session {
         $this->player->setGamemode(GameMode::ADVENTURE());
         $this->player->setHealth($this->player->getMaxHealth());
         $this->player->getInventory()->setItem(4, new ServerSelectorItem());
+        $this->player->getInventory()->setItem(0, new EnderPearlItem());
     }
 
     public function teleportToLobbyWorld(): void {
