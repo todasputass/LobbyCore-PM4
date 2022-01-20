@@ -14,6 +14,8 @@ use pocketmine\entity\Location;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
 use Lobby\Forms\ServersForm;
+use pocketmine\event\player\PlayerExhaustEvent;
+use pocketmine\event\entity\EntityDamageEvent;
 
 class EventListener implements Listener {
 
