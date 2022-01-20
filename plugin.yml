@@ -2,4 +2,4 @@ name: LobbyCore
 author: [itoozh - Serg1h]
 main: Lobby\Main
 version: 0.0.1
-api: "4.0.0"
+api: 4.0.0

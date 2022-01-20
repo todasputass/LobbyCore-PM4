@@ -2,49 +2,45 @@
 
 namespace Lobby;
 
+use Lobby\command\SpawnCommand;
+use Lobby\listener\EventListener;
+use Lobby\listener\ItemListener;
+use Lobby\listener\SessionListener;
+use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
-use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
-use Lobby\session\SessionFactory;
-use Lobby\Commands\SpawnCommand;
-    
+
 class Main extends PluginBase {
     use SingletonTrait;
     
-    /** @var SessionFactory */
-    private SessionFactory $sessionFactory;
-    
     protected function onLoad(): void {
         self::setInstance($this);
-    }
-
-    protected function onEnable() : void {
         # Setup config
         $this->saveResource("config.yml");
-        # Setup session factory
-        $this->sessionFactory = new SessionFactory;
+    }
+
+    protected function onEnable(): void {
+        $server = $this->getServer();
         # Add a Custom MOTD
-        $this->getServer()->getNetwork()->setName($this->getConfig()->get("server-motd"));
-        # Register task
-        $this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function (): void {
-            foreach ($this->getSessionFactory()->getSessions() as $session)
-                $session->update();
-        }), 1);
-        # Register event handler
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+        $server->getNetwork()->setName($this->getConfig()->get("server-motd"));
         # Register commands
-        $this->getServer()->getCommandMap()->register('spawn', new SpawnCommand());
+        $server->getCommandMap()->register('spawn', new SpawnCommand());
+
+        # Register events
+        $this->registerListener(new EventListener());
+        $this->registerListener(new ItemListener());
+        $this->registerListener(new SessionListener());
+
+        # Setup task
+        $this->getScheduler()->scheduleRepeatingTask(new CheckPingTask(), 1);
         
-        # Logger
+        # Send message to the logger
         $this->getLogger()->info("LobbyCore Enabled");
     }
-    
-    /**
-     * @return SessionFactory
-     */
-    public function getSessionFactory(): SessionFactory
-    {
-        return $this->sessionFactory;
+
+    private function registerListener(Listener $listener): void {
+        $this->getServer()->getPluginManager()->registerEvents($listener, $this);
     }
+
 }
 
