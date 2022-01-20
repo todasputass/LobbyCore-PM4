@@ -52,7 +52,7 @@ class Session {
         $this->player->setGamemode(GameMode::ADVENTURE());
         $this->player->setHealth($this->player->getMaxHealth());
         $this->player->getInventory()->setItem(4, new ServerSelectorItem());
-        $this->player->getInventory()->setItem(0, new EnderPearlItem());
+        $this->player->getInventory()->setItem(0, new EnderPearlBuffItem());
     }
 
     public function teleportToLobbyWorld(): void {
