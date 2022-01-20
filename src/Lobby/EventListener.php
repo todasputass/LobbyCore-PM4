@@ -25,7 +25,7 @@ class EventListener implements Listener {
         $player->setGamemode(GameMode::ADVENTURE());
         $player->setHealth($player->getMaxHealth());
         $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
-        $player->getInventory()->setItem(4, ItemFactory::getInstance()->get(ItemIds::COMPASS)->setCustomName("§l§r§6Servers"));
+        $player->getInventory()->setItem(4, ItemFactory::getInstance()->get(ItemIds::COMPASS)->setCustomName("§r§7» §l§6Server Selector §r§7«"));
         # Welcome title
         $player->sendTitle(Main::getInstance()->getConfig()->get("server-name"));
         $player->teleport($player->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
@@ -49,7 +49,7 @@ class EventListener implements Listener {
 
         #
         switch ($name) {
-            case "§l§r§6Servers":
+            case "§r§7» §l§6Server Selector §r§7«":
                 $player->sendForm(new ServersForm());
                 break;
         }
@@ -61,7 +61,7 @@ class EventListener implements Listener {
 
         #
         switch ($name) {
-            case "§l§r§6Servers":
+            case "§r§7» §l§6Server Selector §r§7«":
                 $player->sendForm(new ServersForm());
                 break;
         }
