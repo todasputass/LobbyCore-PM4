@@ -28,6 +28,8 @@ class EventListener implements Listener {
         $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
         $player->getInventory()->setItem(4, ItemFactory::getInstance()->get(ItemIds::COMPASS)->setCustomName("§l§r§6Servers"));
         # Welcome title
+        $player->sendTitle(Main::getInstance()->getConfig()->get("Server-Name"));
+        $player->teleport($this->getServer()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
         $player->sendSubTitle("§6Welcome " . $player->getName());
         # Welcome message
         $event->setJoinMessage("§7[§2+§7] " . $player->getName());
@@ -45,15 +47,16 @@ class EventListener implements Listener {
     public function onInteract(PlayerInteractEvent $event) : void {
         $player = $event->getPlayer();
         $name = $event->getItem()->getCustomName();
-
-        switch ($name) {
-            case "§l§r§6Servers":
-                $player->sendForm(new ServersForm());
-                break;
+        if ($name) {
+            switch ($name) {
+                case "§l§r§6Servers":
+                    $player->sendForm(new ServersForm());
+                    break;
+            }
         }
     }
 
-    public function onItemUse(PlayerItemUseEvent $event) : void {
+    public function rightclick(PlayerItemUseEvent $event) : void {
         $player = $event->getPlayer();
         $name = $event->getItem()->getCustomName();
         if ($name) {
@@ -62,6 +65,16 @@ class EventListener implements Listener {
                     $player->sendForm(new ServersForm());
                     break;
             }
+        }
+    }
+
+    public function onExhaust(PlayerExhaustEvent $event): void {
+        $event->cancel(true);
+    }
+
+    public function onDamage(EntityDamageEvent $event) {
+        if($event->getCause() === EntityDamageEvent::CAUSE_FALL) {
+            $event->cancel(true);
         }
     }
 }
