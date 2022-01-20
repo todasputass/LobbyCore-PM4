@@ -16,8 +16,20 @@ use Lobby\Forms\ServersForm;
 
 class EventListener implements Listener {
 
-    public function onJoin(PlayerJoinEvent $event) : void {
+    public function onJoin(PlayerJoinEvent $event) : void 
+    {
         $player = $event->getPlayer();
+        
+        $joinMessage = [
+            "§r§f-----------------------------",
+            "           ".Main::getInstance()->getConfig()->get("server-name"),
+            "§l§4STORE:§r§f ".Main::getInstance()->getConfig()->get("server-storelink"),
+            "§l§bTWITTER:§r§f ".Main::getInstance()->getConfig()->get("server-twitterlink"),
+            "§9§lDISCORD:§r§f ".Main::getInstance()->getConfig()->get("server-discordlink"),
+            "§d§lYOUTUBE:§r§f ".Main::getInstance()->getConfig()->get("server-youtubelink"),
+            "§r§f-----------------------------"
+        ];
+        $player->sendMessage(join("\n", $joinMessage));
 
         # Setup session
         Main::getInstance()->getSessionFactory()->createSession($player);

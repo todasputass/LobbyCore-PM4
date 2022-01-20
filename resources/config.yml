@@ -1,5 +1,9 @@
-# Server name
-server-name: "§6LobbyCore"
+# Server Data
+server-name: "§6§lLobbyCore"
+server-storelink: store.servermc.net
+server-twitterlink: "@ServerMC"
+server-discordlink: "discord.gg/servermc"
+server-youtubelink: "youtube.com/itoozh"
 
 # Server MOTD
 Server-MOTD: "§6Server"
@@ -12,7 +16,6 @@ servers.available:
     address: "play.greekmc.net:19132"
 
 # Scoreboard settings
-scoreboard.title: '&6Server &f| &7Hub'
 scoreboard.lines:
   - '&7------------------'
   - ' &6Players: &7{players_count}'

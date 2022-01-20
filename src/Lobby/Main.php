@@ -27,7 +27,7 @@ class Main extends PluginBase implements Listener {
         
         # Logger
         $this->getLogger()->info("LobbyCore Enabled");
-
+        # Add a Custom MOTD
         $this->getServer()->getNetwork()->setName($this->getConfig()->get("Server-MOTD"));
     }
     
