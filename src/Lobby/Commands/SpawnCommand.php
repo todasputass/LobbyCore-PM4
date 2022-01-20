@@ -15,7 +15,7 @@ class SpawnCommand extends Command {
 
     public function __construct()
     {
-        parent::__construct('spawn', 'Usalo para Teletransportarte al Spawn');
+        parent::__construct('spawn', 'Use it to teleport to the world spawn');
     }
     
     /**
