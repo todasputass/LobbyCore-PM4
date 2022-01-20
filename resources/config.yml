@@ -19,12 +19,16 @@ servers.available:
 scoreboard.title: §6§lGreek §r§f| §7Lobby-1
 scoreboard.lines:
   - ' &7---------------------'
-  - '&7&7'
-  - ' &6Players: &7{players_count}'
-  - ' &6Ping: &7{player_ping}'
-  - ' &6Nick: &7{player_nick}'
+  - ' &6Online:' 
+  - ' &7{players_count}'
+  - '&7&r&b'
+  - ' &6Ping:' 
+  - ' &7{player_ping}'
+  - '&7&r&a'
+  - ' &6Nick:'
+  - ' &7{player_nick}'
   - '&7&r'
-  - ' &7server.net'
+  - ' &7greekmc.net'
   - ' &7---------------------&r'
 
 
