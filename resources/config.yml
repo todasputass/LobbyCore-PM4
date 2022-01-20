@@ -1,7 +1,7 @@
+# Server name
+server-name: "LobbyCore"
 
-Server-Name: "LobbyCore"
-
-# Servidores settings
+# Servers settings
 servers.available:
   - server: "HCF"
     address: "play.greekmc.net:19132"
@@ -9,8 +9,8 @@ servers.available:
     address: "play.greekmc.net:19132"
 
 # Scoreboard settings
-ScoreBoardTitle: '&6Server &7| &bHub'
-ScoreBoardLines:
+scoreboard.title: '&6Server &7| &bHub'
+scoreboard.lines:
   - '&7------------------'
   - ' &6Players: &7{players_count}'
   - ' &6Ping: &7{player_ping}'
