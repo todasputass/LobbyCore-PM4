@@ -67,12 +67,12 @@ class EventListener implements Listener {
         }
     }
 
-    public function onExhaust(PlayerExhaustEvent $event): void {
+    public function onExhaust(PlayerExhaustEvent $event) : void {
         # Cancel hunger update
         $event->cancel();
     }
 
-    public function onDamage(EntityDamageEvent $event) {
+    public function onDamage(EntityDamageEvent $event : void {
         # Cancel fall damage
         if($event->getCause() === EntityDamageEvent::CAUSE_FALL) {
             $event->cancel();
