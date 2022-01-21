@@ -12,6 +12,7 @@ use pocketmine\item\ItemIds;
 use pocketmine\item\ItemUseResult;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
+use pocketmine\world\sound\EndermanTeleportSound;
 
 class EnderPearlBuffItem extends LobbyItem {
 
@@ -20,8 +21,10 @@ class EnderPearlBuffItem extends LobbyItem {
     }
 
     public function onClickAir(Player $player, Vector3 $directionVector): ItemUseResult {
+        $world = $player->getWorld();
         $player->setMotion($player->getDirectionVector()->multiply(1.6));
         $player->getInventory()->setItem(0, $this);
+        $world->addSound($player->getPosition(), new EndermanTeleportSound(), [$player]);
         return ItemUseResult::FAIL();
     }
 
