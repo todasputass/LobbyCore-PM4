@@ -39,7 +39,7 @@ class NPCCommand extends Command{
                     $sender->sendMessage(TextFormat::colorize('§r§cServer Not Found'));
                     return;
                 }
-                $entity = NPCEntity::create($sender, $args[1])
+                $entity = NPCEntity::create($sender, $args[1]);
                 $entity->spawnToAll();
                 $sender->sendMessage(TextFormat::colorize('§r§aNPC created successfully'));
                 break;
