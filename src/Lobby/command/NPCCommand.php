@@ -33,7 +33,8 @@ class NPCCommand extends Command{
                     $sender->sendMessage(TextFormat::colorize('§r§cYou need to put the name of the Server that you defined in the config'));
                     return;
                 }
-                $servers = Main::getInstance()->getConfig()->get('name');
+                $servers = Main::getInstance()->getConfig()->get('servers.available');
+                $servers["name"][$args[0]];
 
                 
                 if (!isset($servers[$args[1]])) {
