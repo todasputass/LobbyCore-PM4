@@ -85,8 +85,7 @@ class NPCEntity extends Human
         
          if ($this->serverId !== null) {
             $data = Main::getInstance()->getConfig()->get('servers.available')[$this->serverId];
-            $this->setNameTag($data['address']);
-            //$this->setNameTag(Main::getInstance()->getConfig()->get('server'));
+            $this->setNameTag(TextFormat::colorize($data['server']));
         } else $this->setNameTag(TextFormat::colorize('&cERROR'));
         return $parent;
     }
