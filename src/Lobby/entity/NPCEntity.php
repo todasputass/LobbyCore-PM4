@@ -70,7 +70,7 @@ class NPCEntity extends Human
             $this->flagForDespawn();
             return;
         }
-        $this->serverName = $nbt->getString('serverName');
+        $this->serverName = $nbt->getString('server');
         $this->setNameTagAlwaysVisible(true);
         $this->setImmobile(true);
     }
@@ -84,8 +84,7 @@ class NPCEntity extends Human
         $parent = parent::onUpdate($currentTick);
         
          if ($this->serverName !== null) {
-            $nametag = str_replace(['{server_name}', '{space}'], [strtoupper($this->serverName), PHP_EOL], Main::getInstance()->getConfig()->get('servers.available'););
-            $this->setNameTag(TextFormat::colorize($nametag));
+            $this->setNameTag(Main::getInstance()->getConfig()->get('server'));
         } else $this->setNameTag(TextFormat::colorize('&cERROR'));
         return $parent;
     }
@@ -109,11 +108,10 @@ class NPCEntity extends Human
             $servers = Main::getInstance()->getConfig()->get('servers.available');
             
             if (!isset($servers[$this->server])) return;
-            $data = $servers[$this->serve];
-            
-            $pk = new TransferPacket;
-            $pk->address = $data['address'];
-            $pk->port = (int) $data['port'];
+            $data = $servers[$this->server];
+
+            $address = explode(":", $server["address"]);
+            $damager->transfer($address[0], (int) $address[1], "Transfer to {$server["server"]}");
             
             $damager->getNetworkSession()->sendDataPacket($pk);
         }
