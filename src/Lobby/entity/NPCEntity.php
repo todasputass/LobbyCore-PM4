@@ -40,7 +40,7 @@ class NPCEntity extends Human
 				new FloatTag($player->getLocation()->yaw),
 				new FloatTag($player->getLocation()->pitch)
 			]));
-        $nbt->setInt('server', $serverId);
+        $nbt->setInt('server', $server);
         $entity = new self($player->getLocation(), $player->getSkin(), $nbt);
         return $entity;
     }
@@ -84,8 +84,12 @@ class NPCEntity extends Human
         $parent = parent::onUpdate($currentTick);
         
          if ($this->serverId !== null) {
-            $data = Main::getInstance()->getConfig()->get('servers.available')[$this->serverId];
-            $this->setNameTag(TextFormat::colorize($data['server']));
+            $servers = Main::getInstance()->getConfig()->get('servers.available');
+
+            if (isset($servers[$this->serverId])) {
+                $data = $servers[$this->serverId];
+                $this->setNameTag(TextFormat::colorize($data['server']));
+           } else $this->setNameTag(TextFormat::colorize('&cERROR'));
         } else $this->setNameTag(TextFormat::colorize('&cERROR'));
         return $parent;
     }
