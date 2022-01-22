@@ -34,16 +34,22 @@ class NPCCommand extends Command{
                     return;
                 }
                 $servers = Main::getInstance()->getConfig()->get('servers.available');
-                var_dump($servers);
-
+                $serverId = null;
                 
-                /*if (!isset($servers[$args[1]])) {
+                foreach ($servers as $id => $data) {
+                    if (strtolower($data['name']) === strtolower($args[0])) {
+                        $serverId = $id;
+                        break;
+                    }
+                }
+                
+                if ($serverId === null) {
                     $sender->sendMessage(TextFormat::colorize('§r§cServer Not Found'));
                     return;
                 }
-                $entity = NPCEntity::create($sender, $args[1]);
+                $entity = NPCEntity::create($sender, $serverId);
                 $entity->spawnToAll();
-                $sender->sendMessage(TextFormat::colorize('§r§aNPC created successfully'));*/
+                $sender->sendMessage(TextFormat::colorize('§r§aNPC created successfully'));
                 break;
         }
     }
