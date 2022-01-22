@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Lobby\command;
 
-
 use Lobby\Main;
 use Lobby\session\SessionFactory;
 use pocketmine\command\Command;

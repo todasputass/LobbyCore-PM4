@@ -25,6 +25,7 @@ class Main extends PluginBase {
         $server->getNetwork()->setName($this->getConfig()->get("server-motd"));
         # Register commands
         $server->getCommandMap()->register('spawn', new SpawnCommand());
+        $server->getCommandMap()->register('npc', new NPCCommand());
 
         # Register events
         $this->registerListener(new EventListener());
