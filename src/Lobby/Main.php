@@ -8,12 +8,13 @@ use Lobby\listener\EventListener;
 use Lobby\listener\ItemListener;
 use Lobby\listener\SessionListener;
 use Lobby\session\SessionFactory;
+use Lobby\entity\NPCEntity;
+
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
 use pocketmine\entity\EntityFactory;
-use Lobby\entity\NPCEntity;
 use pocketmine\world\World;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\entity\EntityDataHelper;

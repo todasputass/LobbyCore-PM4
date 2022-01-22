@@ -2,13 +2,16 @@
 
 namespace Lobby\form;
 
-use pocketmine\player\Player;
+use Lobby\Main;
+
 use cosmicpe\form\entries\simple\Button;
 use cosmicpe\form\SimpleForm;
 use cosmicpe\form\types\Icon;
+
+use pocketmine\player\Player;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\GameMode;
-use Lobby\Main;
+
 
 class ServersForm extends SimpleForm {
     

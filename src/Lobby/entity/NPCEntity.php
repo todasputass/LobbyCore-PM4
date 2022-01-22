@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lobby\entity;
 
 use Lobby\Main;
+
 use pocketmine\entity\Human;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
