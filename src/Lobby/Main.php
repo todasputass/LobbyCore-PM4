@@ -18,14 +18,13 @@ class Main extends PluginBase {
     
     protected function onLoad(): void {
         self::setInstance($this);
-        # Setup config
-        $this->saveResource("config.yml");
     }
 
     protected function onEnable(): void {
-        $server = $this->getServer();
+        # Setup config
+        $this->saveResource("config.yml");
         # Add a Custom MOTD
-        $server->getNetwork()->setName($this->getConfig()->get("server-motd"));
+        $this->getServer()->getNetwork()->setName($this->getConfig()->get("server-motd"));
         # Register commands
         $server->getCommandMap()->register('spawn', new SpawnCommand());
         $server->getCommandMap()->register('npc', new NPCCommand());
