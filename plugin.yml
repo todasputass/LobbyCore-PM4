@@ -3,3 +3,10 @@ author: itoozh
 main: Lobby\Main
 version: 0.0.1
 api: 4.0.0
+permissions:
+  npc.lobby:
+    description: Use for command /npc
+    default: op
+  removenpc.lobby:
+    description: Use for remove entity
+    default: op

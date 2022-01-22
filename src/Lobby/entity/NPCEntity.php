@@ -101,7 +101,7 @@ class NPCEntity extends Human
             
             if (!$damager instanceof Player) return;
             
-            if ($damager->getInventory()->getItemInHand()->getId() === 276 && $damager->hasPermission('removeEntity.lobbycore.permission')) {
+            if ($damager->getInventory()->getItemInHand()->getId() === 276 && $damager->hasPermission('removenpc.lobby')) {
                 $this->kill();
                 return;
             }

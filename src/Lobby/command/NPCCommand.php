@@ -15,7 +15,7 @@ class NPCCommand extends Command{
 
     public function __construct() {
         parent::__construct('npc', 'Use this command to place the NPCs of your server as you have created them in the config.yml');
-        $this->setPermission('npc.lobbycore');
+        $this->setPermission('npc.lobby');
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): void {
@@ -33,7 +33,8 @@ class NPCCommand extends Command{
                     $sender->sendMessage(TextFormat::colorize('§r§cYou need to put the name of the Server that you defined in the config'));
                     return;
                 }
-                $servers = Main::getInstance()->getConfig()->get('servers.available');
+                $servers = Main::getInstance()->getConfig()->get('name');
+
                 
                 if (!isset($servers[$args[1]])) {
                     $sender->sendMessage(TextFormat::colorize('§r§cServer Not Found'));

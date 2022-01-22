@@ -12,9 +12,11 @@ server-motd: "§6§lGreek §r§f| §7Lobby"
 
 # Servers settings /
 servers.available:
-  - server: "§6§lHCF§r§7 - Server1"
+  - name: HCF 
+    server: "§6§lHCF§r§7 - Server1"
     address: "play.greekmc.net:19132"
-  - server: "§6§lPractice§r§7 - Server2"
+  - name: Practice
+    server: "§6§lPractice§r§7 - Server2"
     address: "play.greekmc.net:19132"
 
 # Scoreboard settings / You can use {players_count}, {player_ping}, {player_nick}
