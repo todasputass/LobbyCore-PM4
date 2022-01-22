@@ -12,6 +12,8 @@ use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
+use pocketmine\entity\EntityFactory;
+use Lobby\entity\NPCEntity;
 
 class Main extends PluginBase {
     use SingletonTrait;
@@ -23,12 +25,16 @@ class Main extends PluginBase {
     protected function onEnable(): void {
         $server = $this->getServer();
         # Setup config
-        $this->saveResource("config.yml");
+        $this->saveResource("config.yml");             
         # Add a Custom MOTD
         $this->getServer()->getNetwork()->setName($this->getConfig()->get("server-motd"));
         # Register commands
         $server->getCommandMap()->register('spawn', new SpawnCommand());
         $server->getCommandMap()->register('npc', new NPCCommand());
+        
+        EntityFactory::getInstance()->register(NPCEntity::class, function (World $world, CompoundTag $nbt): NPCEntity {
+            return new NPCEntity(EntityDataHelper::parseLocation($nbt, $world), NPCEntity::parseSkinNBT($nbt), $nbt);
+        }, ['ServerEntity']);
 
         # Register events
         $this->registerListener(new EventListener());
