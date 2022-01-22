@@ -29,7 +29,7 @@ class NPCCommand extends Command{
         
         switch (strtolower($args[0])) {
             case 'add':
-                if (!isset($args[0])) {
+                if (!isset($args[1])) {
                     $sender->sendMessage(TextFormat::colorize('§r§cYou need to put the name of the Server that you defined in the config'));
                     return;
                 }
@@ -37,7 +37,7 @@ class NPCCommand extends Command{
                 $serverId = null;
                 
                 foreach ($servers as $id => $data) {
-                    if (strtolower($data['name']) === strtolower($args[0])) {
+                    if (strtolower($args[1]) === strtolower($data["name"])) {
                         $serverId = $id;
                         break;
                     }
