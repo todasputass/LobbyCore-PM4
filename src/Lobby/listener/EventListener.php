@@ -9,6 +9,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerExhaustEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\player\Player;
 
 class EventListener implements Listener {
 
@@ -44,8 +45,11 @@ class EventListener implements Listener {
         }
         if($event->getCause() === EntityDamageEvent::CAUSE_VOID) {
             $player = $event->getEntity();
-            $event->cancel();
-            SessionFactory::getSession($player)->teleportToLobbyWorld();
+
+            if ($player instanceof Player) {
+                $event->cancel();
+                SessionFactory::getSession($player)->teleportToLobbyWorld();
+            }
             return;
         }
         if($event->getCause() === EntityDamageEvent::CAUSE_ENTITY_ATTACK) {
