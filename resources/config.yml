@@ -1,16 +1,24 @@
-# Server Name
+# Server Name Settings
+# Here you must put the name of your server, which will be placed in several 
+# places within your server automatically
 server-name: "§6§lGreekMC"
 
-# Server data
+# Server Info Settins
+# Here you must add all the data of your server, this data will be shown in a 
+# default message to the players when entering the server
 server-storelink: store.greekmc.net
 server-twitterlink: "@GreekMC"
 server-discordlink: "discord.gg/greekmc"
 server-youtubelink: "youtube.com/itoozh"
 
-# Server MOTD
+# Server MOTD Settings
+# Server custom MOTD, here we can edit the MOTD of your server and put what you like
 server-motd: "§6§lGreek §r§f| §7Lobby"
 
-# Servers settings /
+# Servers for Transfer Settings
+# Here you must configure the servers to which the NPC and the Compass will take you, 
+# by adding them here you will automatically have them in the Form of the compass and 
+# you can also create the NPCs with the command / npc add (server name)
 servers.available:
   - name: HCF 
     server: "§6§lHCF§r§7 - Server1"
@@ -19,10 +27,13 @@ servers.available:
     server: "§6§lPractice§r§7 - Server2"
     address: "play.greekmc.net:19132"
 
-# Scoreboard settings / You can use {players_count}, {player_ping}, {player_nick}
+# ScoreBoard Settings
+# Here you can configure the scoreboard, from the title to the lines you want them 
+# to have, you can use {players_count}, {player_ping}, {player_nick} to further 
+# customize your scoreboard
 scoreboard.title: §6§lGreek §r§f| §7Lobby-1
 scoreboard.lines:
-  - ' &7---------------------'
+  - ' &7---------------------' # 
   - ' &6Online:' 
   - ' §r§f{players_count}'
   - '&7&r&b'
