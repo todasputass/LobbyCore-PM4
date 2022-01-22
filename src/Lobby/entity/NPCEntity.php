@@ -21,9 +21,9 @@ class NPCEntity extends Human
     
     /**
      * @param Player $player
-     * @param string $server
+     * @param int $server
      */
-    public static function create(Player $player, string $server): self
+    public static function create(Player $player, int $server): self
     {
         $nbt = CompoundTag::create()
 			->setTag("Pos", new ListTag([
@@ -40,13 +40,13 @@ class NPCEntity extends Human
 				new FloatTag($player->getLocation()->yaw),
 				new FloatTag($player->getLocation()->pitch)
 			]));
-        $nbt->setString('server', $server);
+        $nbt->setInt('server', $serverId);
         $entity = new self($player->getLocation(), $player->getSkin(), $nbt);
         return $entity;
     }
     
-    /** @var string|null */
-    private ?string $serverName = null;
+    /** @var int|null */
+    private ?int $serverId = null;
     
     /**
      * @return CompoundTag
@@ -55,8 +55,8 @@ class NPCEntity extends Human
     {
         $nbt = parent::saveNBT();
         
-        if ($this->serverName !== null)
-            $nbt->setString('server', $this->serverName);
+        if ($this->serverId !== null)
+            $nbt->setInt('server', $this->serverId);
         return $nbt;
     }
     /**
@@ -70,7 +70,7 @@ class NPCEntity extends Human
             $this->flagForDespawn();
             return;
         }
-        $this->serverName = $nbt->getString('server');
+        $this->serverId = $nbt->getInt('server');
         $this->setNameTagAlwaysVisible(true);
         $this->setImmobile(true);
     }
@@ -83,8 +83,10 @@ class NPCEntity extends Human
     {
         $parent = parent::onUpdate($currentTick);
         
-         if ($this->serverName !== null) {
-            $this->setNameTag(Main::getInstance()->getConfig()->get('server'));
+         if ($this->serverId !== null) {
+            $data = Main::getInstance()->getConfig()->get('servers.available')[$this->serverId];
+            $this->setNameTag($data['address']);
+            //$this->setNameTag(Main::getInstance()->getConfig()->get('server'));
         } else $this->setNameTag(TextFormat::colorize('&cERROR'));
         return $parent;
     }
@@ -107,11 +109,11 @@ class NPCEntity extends Human
             }
             $servers = Main::getInstance()->getConfig()->get('servers.available');
             
-            if (!isset($servers[$this->server])) return;
-            $data = $servers[$this->server];
+            if (!isset($servers[$this->serverId])) return;
+            $data = $servers[$this->serverId];
 
-            $address = explode(":", $server["address"]);
-            $damager->transfer($address[0], (int) $address[1], "Transfer to {$server["server"]}");
+            $address = explode(":", $data["address"]);
+            $damager->transfer($address[0], (int) $address[1], "Transfer to {$server["name"]}");
             
             $damager->getNetworkSession()->sendDataPacket($pk);
         }
