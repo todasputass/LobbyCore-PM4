@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Lobby\entity;
 
-use juqn\lobbycore\LobbyCore;
+use Lobby\Main;
 use pocketmine\entity\Human;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
@@ -116,9 +116,7 @@ class NPCEntity extends Human
             $data = $servers[$this->serverId];
 
             $address = explode(":", $data["address"]);
-            $damager->transfer($address[0], (int) $address[1], "Transfer to {$server["name"]}");
-            
-            $damager->getNetworkSession()->sendDataPacket($pk);
+            $damager->transfer($address[0], (int) $address[1], "Transfer");
         }
     }
 }

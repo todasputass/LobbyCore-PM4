@@ -14,6 +14,9 @@ use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
 use pocketmine\entity\EntityFactory;
 use Lobby\entity\NPCEntity;
+use pocketmine\world\World;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\entity\EntityDataHelper;
 
 class Main extends PluginBase {
     use SingletonTrait;
