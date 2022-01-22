@@ -7,8 +7,10 @@ use Lobby\command\NPCCommand;
 use Lobby\listener\EventListener;
 use Lobby\listener\ItemListener;
 use Lobby\listener\SessionListener;
+use Lobby\session\SessionFactory;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
+use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
 
 class Main extends PluginBase {
@@ -34,7 +36,10 @@ class Main extends PluginBase {
         $this->registerListener(new SessionListener());
 
         # Setup task
-        $this->getScheduler()->scheduleRepeatingTask(new CheckPingTask(), 1);
+        $this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function (): void {
+            foreach (SessionFactory::getSessions() as $session)
+                $session->update();
+        }), 1);
         
         # Send message to the logger
         $this->getLogger()->info("LobbyCore Enabled");
