@@ -10,14 +10,14 @@ use Lobby\listener\SessionListener;
 use Lobby\session\SessionFactory;
 use Lobby\entity\NPCEntity;
 
+use pocketmine\entity\EntityDataHelper;
+use pocketmine\entity\EntityFactory;
 use pocketmine\event\Listener;
+use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
-use pocketmine\entity\EntityFactory;
 use pocketmine\world\World;
-use pocketmine\nbt\tag\CompoundTag;
-use pocketmine\entity\EntityDataHelper;
 
 class Main extends PluginBase {
     use SingletonTrait;
@@ -35,7 +35,7 @@ class Main extends PluginBase {
         # Register commands
         $server->getCommandMap()->register('spawn', new SpawnCommand());
         $server->getCommandMap()->register('npc', new NPCCommand());
-        
+        # Register entity
         EntityFactory::getInstance()->register(NPCEntity::class, function (World $world, CompoundTag $nbt): NPCEntity {
             return new NPCEntity(EntityDataHelper::parseLocation($nbt, $world), NPCEntity::parseSkinNBT($nbt), $nbt);
         }, ['ServerEntity']);
