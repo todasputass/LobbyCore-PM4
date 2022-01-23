@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Lobby\session;
 
-use Lobby\item\{ServerSelectorItem, EnderPearlBuffItem};
+use Lobby\item\ServerSelectorItem;
+use Lobby\item\EnderPearlBuffItem;
 use Lobby\Main;
+use Lobby\utils\Utils;
 use pocketmine\player\GameMode;
 use pocketmine\player\Player;
 use pocketmine\Server;
@@ -77,7 +79,7 @@ class Session {
 
         $config = Main::getInstance()->getConfig();
         foreach($config->get('scoreboard.lines') as $content) {
-            $content = str_replace(['{players_count}', '{player_ping}', '{player_nick}'], [count(Main::getInstance()->getServer()->getOnlinePlayers()), $this->player->getNetworkSession()->getPing(), $this->player->getName()], $content);
+            $content = str_replace(['{players_count}', '{player_ping}', '{player_nick}'], [Utils::getNetworkPlayers(), $this->player->getNetworkSession()->getPing(), $this->player->getName()], $content);
             $this->scoreboard->addLine(TextFormat::colorize($content));
         }
     }
