@@ -37,7 +37,7 @@ class EventListener implements Listener {
     public function onQuit(PlayerQuitEvent $event): void {
         # Leave message
         $event->setQuitMessage(TextFormat::colorize("&7[&c-&7] " . $event->getPlayer()->getName()));
-    },
+    }
 
     public function onExhaust(PlayerExhaustEvent $event): void {
         # Cancel hunger update
