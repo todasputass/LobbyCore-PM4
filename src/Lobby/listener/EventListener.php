@@ -13,6 +13,7 @@ use pocketmine\event\player\PlayerExhaustEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 
 class EventListener implements Listener {
 
@@ -28,15 +29,15 @@ class EventListener implements Listener {
             $session->update();
         }
         # Welcome message
-        $event->setJoinMessage("§7[§2+§7] " . $player->getName());
+        $event->setJoinMessage(TextFormat::colorize("&7[&2+&7] " . $player->getName()));
         $bossbar = new BossBarAPI();
-        $bossbar->sendBossBar($player, $config->get("scoreboard.title"), 0, "0", 0);
+        $bossbar->sendBossBar($player, TextFormat::colorize($config->get("scoreboard.title")), 0, "0", 0);
     }
 
     public function onQuit(PlayerQuitEvent $event): void {
         # Leave message
-        $event->setQuitMessage("§7[§c-§7] " . $event->getPlayer()->getName());
-    }
+        $event->setQuitMessage(TextFormat::colorize("&7[&c-&7] " . $event->getPlayer()->getName()));
+    },
 
     public function onExhaust(PlayerExhaustEvent $event): void {
         # Cancel hunger update
