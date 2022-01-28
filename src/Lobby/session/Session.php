@@ -14,7 +14,8 @@ use pocketmine\Server;
 use pocketmine\utils\TextFormat;
 
 class Session {
-
+    
+    /** @var int */
     private int $current_ping;
     
     /**
@@ -36,16 +37,16 @@ class Session {
     public function sendWelcomeMessages(): void {
         $config = Main::getInstance()->getConfig();
         $join_message = [
-            "§r§f-----------------------------",
-            "           " . $config->get("server-name"),
-            "§l§dSTORE:§r§f " . $config->get("server-storelink"),
-            "§l§bTWITTER:§r§f " . $config->get("server-twitterlink"),
-            "§9§lDISCORD:§r§f " . $config->get("server-discordlink"),
-            "§4§lYOUTUBE:§r§f " . $config->get("server-youtubelink"),
-            "§r§f-----------------------------"
+            TextFormat::colorize("&r&f-----------------------------"),
+            TextFormat::colorize("           " . $config->get("server-name")),
+            TextFormat::colorize("&l&dSTORE:§r§f " . $config->get("server-storelink")),
+            TextFormat::colorize("&l&bTWITTER:§r§f " . $config->get("server-twitterlink")),
+            TextFormat::colorize("&9&lDISCORD:§r§f " . $config->get("server-discordlink")),
+            TextFormat::colorize("&4&lYOUTUBE:§r§f " . $config->get("server-youtubelink")),
+            TextFormat::colorize("&r&f-----------------------------")
         ];
         $this->player->sendMessage(join("\n", $join_message));
-        $this->player->sendTitle($config->get("server-name"), "§6Welcome " . $name = $this->player->getName());
+        $this->player->sendTitle(TextFormat::colorize($config->get("server-name"), "&6Welcome " . $this->player->getName()));
     }
 
     public function setup(): void {
