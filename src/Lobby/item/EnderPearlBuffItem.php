@@ -18,7 +18,7 @@ use pocketmine\world\sound\EndermanTeleportSound;
 class EnderPearlBuffItem extends LobbyItem {
 
     public function __construct() {
-        parent::__construct(new ItemIdentifier(ItemIds::ENDER_PEARL, 0), "§r§7» §r§l§6EnderPearl Buff §r§7«");
+        parent::__construct(new ItemIdentifier(ItemIds::ENDER_PEARL, 0), "§r§6EnderPearl §r§7(Right Click)");
     }
 
     public function onClickAir(Player $player, Vector3 $directionVector): ItemUseResult {

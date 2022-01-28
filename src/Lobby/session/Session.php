@@ -6,6 +6,7 @@ namespace Lobby\session;
 
 use Lobby\item\ServerSelectorItem;
 use Lobby\item\EnderPearlBuffItem;
+use Lobby\item\CosmeticsItem;
 use Lobby\Main;
 use Lobby\utils\Utils;
 use pocketmine\player\GameMode;
@@ -55,6 +56,7 @@ class Session {
         $hunger_manager->setFood($hunger_manager->getMaxFood());
         $this->player->setGamemode(GameMode::ADVENTURE());
         $this->player->setHealth($this->player->getMaxHealth());
+        $this->player->getInventory()->setItem(8, new CosmeticsItem());
         $this->player->getInventory()->setItem(4, new ServerSelectorItem());
         $this->player->getInventory()->setItem(0, new EnderPearlBuffItem());
     }
