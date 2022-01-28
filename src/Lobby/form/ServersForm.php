@@ -9,8 +9,7 @@ use cosmicpe\form\SimpleForm;
 use cosmicpe\form\types\Icon;
 
 use pocketmine\player\Player;
-use pocketmine\item\VanillaItems;
-use pocketmine\player\GameMode;
+use pocketmine\utils\TextFormat;
 
 
 class ServersForm extends SimpleForm {
@@ -20,9 +19,9 @@ class ServersForm extends SimpleForm {
         $servers = Main::getInstance()->getConfig()->get('servers.available');
 
         foreach($servers as $server) {
-            $this->addButton(new Button($server["server"] . "\nClick to join"), function(Player $player, int $index) use ($server) : void {
-                $address = explode(":", $server["address"]); # el explode convierte la string en array, dividiendose por ":"
-                $player->transfer($address[0], (int) $address[1], "Transfer to {$server["server"]}"); # Aqui sacamos la array 0 la cual contiene la IP ya que esta en el primer parametro
+            $this->addButton(new Button(TextFormat::colorize("&6" . $server["name"] . "\n&fClick to join")), function(Player $player, int $index) use ($server) : void {
+                $address = explode(":", $server["address"]);
+                $player->transfer($address[0], (int) $address[1], "Transfer to {$server["name"]}");
             });
         }
     }

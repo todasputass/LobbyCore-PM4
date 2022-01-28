@@ -17,6 +17,7 @@ use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\SingletonTrait;
+use pocketmine\utils\TextFormat;
 use pocketmine\world\World;
 
 class Main extends PluginBase {
@@ -30,7 +31,7 @@ class Main extends PluginBase {
         # Setup config
         $this->saveResource("config.yml");             
         # Add a Custom MOTD
-        $this->getServer()->getNetwork()->setName($this->getConfig()->get("server-motd"));
+        $this->getServer()->getNetwork()->setName(TextFormat::colorize($this->getConfig()->get("server-motd")));
         # Register commands
         $this->getServer()->getCommandMap()->register('spawn', new SpawnCommand());
         $this->getServer()->getCommandMap()->register('npc', new NPCCommand());

@@ -90,7 +90,8 @@ class NPCEntity extends Human
 
             if (isset($servers[$this->serverId])) {
                 $data = $servers[$this->serverId];
-                $this->setNameTag(TextFormat::colorize($data['server'] . PHP_EOL . "&7Online: &f" . Utils::getServerPlayers($data['name'])));
+                $format = str_replace(['{n}', '{players}'], [PHP_EOL, Utils::getServerPlayers($data['name'])], $data['format']);
+                $this->setNameTag(TextFormat::colorize($format));
            } else $this->setNameTag(TextFormat::colorize('&cERROR'));
         } else $this->setNameTag(TextFormat::colorize('&cERROR'));
         return $parent;
