@@ -32,8 +32,8 @@ class Main extends PluginBase {
         # Add a Custom MOTD
         $this->getServer()->getNetwork()->setName($this->getConfig()->get("server-motd"));
         # Register commands
-        $server->getCommandMap()->register('spawn', new SpawnCommand());
-        $server->getCommandMap()->register('npc', new NPCCommand());
+        $this->getServer()->getCommandMap()->register('spawn', new SpawnCommand());
+        $this->getServer()->getCommandMap()->register('npc', new NPCCommand());
         # Register entity
         EntityFactory::getInstance()->register(NPCEntity::class, function (World $world, CompoundTag $nbt): NPCEntity {
             return new NPCEntity(EntityDataHelper::parseLocation($nbt, $world), NPCEntity::parseSkinNBT($nbt), $nbt);
