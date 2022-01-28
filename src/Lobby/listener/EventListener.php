@@ -14,6 +14,9 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
+use pocketmine\world\particle\FloatingTextParticle;
+use pocketmine\world\Position;
+use pocketmine\math\Vector3;
 
 class EventListener implements Listener {
 
@@ -30,6 +33,7 @@ class EventListener implements Listener {
         }
         # Welcome message
         $event->setJoinMessage(TextFormat::colorize("&7[&2+&7] " . $player->getName()));
+        $event->getServer()->getWorldManager()->getDefaultWorld()->addParticle(new Vector3(7, 61, 2), new FloatingTextParticle("", "Greek"), [$player]);
         $bossbar = new BossBarAPI();
         $bossbar->sendBossBar($player, TextFormat::colorize($config->get("scoreboard.title")), 0, "0", 0);
     }
