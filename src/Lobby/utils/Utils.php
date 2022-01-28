@@ -11,7 +11,7 @@ final class Utils {
     /**
      * @return int
      */
-    static public function getNetworkPlayers() : int {
+    static public function getNetworkPlayers(): int {
         $players = count(Server::getInstance()->getOnlinePlayers());
         $plugin = Server::getInstance()->getPluginManager()->getPlugin("Servers");
         
@@ -25,13 +25,29 @@ final class Utils {
     /**
      * @return int
      */
-    static public function getNetworkMaxPlayers() : int {
+    static public function getNetworkMaxPlayers(): int {
         $players = Server::getInstance()->getMaxPlayers();
         $plugin = Server::getInstance()->getPluginManager()->getPlugin("Servers");
         
         if ($plugin !== null) {
             foreach ($plugin->getAllServers() as $server)
                 $players += $server->getMaxPlayers();
+        }
+        return $players;
+    }
+
+    /**
+     * @param string $name
+     * @return int
+     */
+    static public function getServerPlayers(string $name): int {
+        $players = 0;
+        $plugin = Server::getInstance()->getPluginManager()->getPlugin("Servers");
+        
+        if ($plugin !== null) {
+            $server = $plugin->getServers($name); // TODO: The name of the function is that way so as not to interfere with getServer()
+            
+            if ($server !== null) $players = $server->getPlayers();
         }
         return $players;
     }
