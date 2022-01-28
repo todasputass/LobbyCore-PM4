@@ -18,13 +18,14 @@ server-motd: "§6§lGreek §r§f| §7Lobby"
 # Servers for Transfer Settings
 # Here you must configure the servers to which the NPC and the Compass will take you, 
 # by adding them here you will automatically have them in the Form of the compass and 
-# you can also create the NPCs with the command / npc add (server name)
+# you can also create the NPCs with the command /npc add (server name)
+# Use: {n} for \n and {players} for online players in the server
 servers.available:
   - name: HCF 
-    server: "§6§lHCF§r§7 - Server1"
+    format: "§6§lHCF§r{n}&7Online: &f{players}"
     address: "play.greekmc.net:19132"
   - name: Practice
-    server: "§6§lPractice§r§7 - Server2"
+    format: "§6§lPractice§r§7 - Server2"
     address: "play.greekmc.net:19132"
 
 # ScoreBoard Settings
