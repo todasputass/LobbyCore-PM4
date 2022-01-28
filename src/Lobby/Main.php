@@ -27,7 +27,6 @@ class Main extends PluginBase {
     }
 
     protected function onEnable(): void {
-        $server = $this->getServer();
         # Setup config
         $this->saveResource("config.yml");             
         # Add a Custom MOTD
