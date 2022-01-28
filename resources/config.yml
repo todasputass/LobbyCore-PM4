@@ -23,10 +23,13 @@ server-motd: "&6&lGreek &r&f| &7Lobby"
 servers.available:
   - name: HCF 
     format: "&6&lHCF&r{n}&7Online: &f{players}"
-    address: "play.greekmc.net:19132"
+    address: "199.127.62.88:19060"
   - name: Practice
-    format: "&6&lPractice&r&7 - Server2"
-    address: "play.greekmc.net:19132"
+    format: "§6§lPractice§r{n}&7Online: &f{players}"
+    address: "199.127.62.88:19327"
+  - name: UHC
+    format: "§6§lUHC§r{n}&7Online: &f{players}"
+    address: "uhc.greekmc.net:19132"
 
 # ScoreBoard Settings
 # Here you can configure the scoreboard, from the title to the lines you want them 

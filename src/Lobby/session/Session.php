@@ -46,7 +46,8 @@ class Session {
             TextFormat::colorize("&r&f-----------------------------")
         ];
         $this->player->sendMessage(join("\n", $join_message));
-        $this->player->sendTitle(TextFormat::colorize($config->get("server-name"), "&6Welcome " . $this->player->getName()));
+        $this->player->sendTitle(TextFormat::colorize($config->get("server-name")));
+        $player->sendSubTitle("&6Welcome " . $this->player->getName());
     }
 
     public function setup(): void {
