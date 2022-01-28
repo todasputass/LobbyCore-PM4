@@ -35,7 +35,7 @@ servers.available:
 # Here you can configure the scoreboard, from the title to the lines you want them 
 # to have, you can use {players_count}, {player_ping}, {player_nick} to further 
 # customize your scoreboard
-scoreboard.title: §6§lGreek §r§f| §7Lobby-1
+scoreboard.title: &6&lGreek &r&f| &7Lobby-1
 scoreboard.lines:
   - ' &7---------------------'  
   - ' &6Online:' 
