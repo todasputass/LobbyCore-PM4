@@ -3,6 +3,9 @@
 namespace Lobby\listener;
 
 use Lobby\session\SessionFactory;
+use Lobby\Main;
+
+use skymin\bossbar\BossBarAPI;
 
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
@@ -14,6 +17,7 @@ use pocketmine\player\Player;
 class EventListener implements Listener {
 
     public function onJoin(PlayerJoinEvent $event): void {
+        $config = Main::getInstance()->getConfig();
         $session = SessionFactory::getSession($player = $event->getPlayer());
         $session->initScoreboard();
         $session->sendWelcomeMessages();
@@ -25,6 +29,8 @@ class EventListener implements Listener {
         }
         # Welcome message
         $event->setJoinMessage("§7[§2+§7] " . $player->getName());
+        $bossbar = new BossBarAPI();
+        $bossbar->sendBossBar($player, $config->get("scoreboard.title"), 0, "0", 0);
     }
 
     public function onQuit(PlayerQuitEvent $event): void {
