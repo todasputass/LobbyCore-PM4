@@ -1,12 +1,14 @@
 # Server Name Settings
 # Here you must put the name of your server, which will be placed in several 
 # places within your server automatically
-server-name: "&6&lGreekMC"
+server-name: "&6&lGreek"
+
+Floating: "0:102:3"
 
 # Server Info Settins
 # Here you must add all the data of your server, this data will be shown in a 
 # default message to the players when entering the server
-server-storelink: store.greekmc.net
+server-storelink: "§o§7https://store.greekmc.net/"
 server-twitterlink: "@GreekMC"
 server-discordlink: "discord.gg/greekmc"
 server-youtubelink: "youtube.com/itoozh"
@@ -22,13 +24,13 @@ server-motd: "&6&lGreek &r&f| &7Lobby"
 # Use: {n} for \n and {players} for online players in the server
 servers.available:
   - name: HCF 
-    format: "&6&lHCF&r{n}&7Online: &f{players}"
+    format: "&6&lHCF&r{n}{n}&f{players} Online{n}&7&oCLICK TO PLAY!&r{n}{n}"
     address: "199.127.62.88:19060"
   - name: Practice
-    format: "§6§lPractice§r{n}&7Online: &f{players}"
+    format: "&6&lPRACTICE&r{n}{n}&f{players} Online{n}&7&oCLICK TO PLAY!&r{n}{n}"
     address: "199.127.62.88:19327"
   - name: UHC
-    format: "§6§lUHC§r{n}&7Online: &f{players}"
+    format: "&6&lUHC&r{n}{n}&f{players} Online{n}&7&oCLICK TO PLAY!&r{n}{n}"
     address: "uhc.greekmc.net:19132"
 
 # ScoreBoard Settings

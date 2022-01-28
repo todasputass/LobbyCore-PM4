@@ -33,7 +33,12 @@ class EventListener implements Listener {
         }
         # Welcome message
         $event->setJoinMessage(TextFormat::colorize("&7[&2+&7] " . $player->getName()));
-        $event->getServer()->getWorldManager()->getDefaultWorld()->addParticle(new Vector3(7, 61, 2), new FloatingTextParticle("", "Greek"), [$player]);
+        $pos = explode(':', $config->get('Floating'));
+        $player->getServer()->getWorldManager()->getDefaultWorld()->addParticle(new Vector3(intval($pos[0]), intval($pos[1]), intval($pos[2])), new FloatingTextParticle("", "§r§eWelcome to " . $config->get("server-name")), [$player]);
+        $player->getServer()->getWorldManager()->getDefaultWorld()->addParticle(new Vector3(intval($pos[0]), intval($pos[1])+0.50, intval($pos[2])), new FloatingTextParticle("", "§r§fUsa el selector para explorar las §r§emodalidades§r§f."), [$player]);
+        $player->getServer()->getWorldManager()->getDefaultWorld()->addParticle(new Vector3(intval($pos[0]), intval($pos[1])+1, intval($pos[2])), new FloatingTextParticle("", "§r§a§l25% OFF SALE"), [$player]);
+        $player->getServer()->getWorldManager()->getDefaultWorld()->addParticle(new Vector3(intval($pos[0]), intval($pos[1])+1.25, intval($pos[2])), new FloatingTextParticle("", "§r§6Activo por tiempo limitado!"), [$player]);
+        $player->getServer()->getWorldManager()->getDefaultWorld()->addParticle(new Vector3(intval($pos[0]), intval($pos[1])+1.75, intval($pos[2])), new FloatingTextParticle("", $config->get("server-storelink")), [$player]);
         $bossbar = new BossBarAPI();
         $bossbar->sendBossBar($player, TextFormat::colorize($config->get("scoreboard.title")), 0, "0", 0);
     }
