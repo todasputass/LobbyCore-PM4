@@ -1,9 +1,9 @@
 # Server Name Settings
 # Here you must put the name of your server, which will be placed in several 
 # places within your server automatically
-server-name: "&6&lGreek"
+server-name: "§6§lGreek§8Network"
 
-Floating: "0:102:3"
+Floating: "5:63:0"
 
 # Server Info Settins
 # Here you must add all the data of your server, this data will be shown in a 
@@ -24,29 +24,30 @@ server-motd: "&6&lGreek &r&f| &7Lobby"
 # Use: {n} for \n and {players} for online players in the server
 servers.available:
   - name: HCF 
-    format: "&6&lHCF&r{n}{n}&f{players} Online{n}&7&oCLICK TO PLAY!&r{n}{n}"
+    format: "&6&lHCF&r{n}-------------------{n}&f{players} Online{n}&7&l&oCLICK TO PLAY!&r{n}-------------------{n}{n} {n}"
     address: "199.127.62.88:19060"
   - name: Practice
-    format: "&6&lPRACTICE&r{n}{n}&f{players} Online{n}&7&oCLICK TO PLAY!&r{n}{n}"
+    format: "&6&lPRACTICE&r{n}-------------------{n}&f{players} Online{n}&7&l&oCLICK TO PLAY!&r{n}-------------------{n}"
     address: "199.127.62.88:19327"
   - name: UHC
-    format: "&6&lUHC&r{n}{n}&f{players} Online{n}&7&oCLICK TO PLAY!&r{n}{n}"
+    format: "&6&lUHC&r{n}-------------------{n}&f{players} Online{n}&7&l&oCLICK TO PLAY!&r{n}-------------------{n}"
     address: "uhc.greekmc.net:19132"
 
 # ScoreBoard Settings
 # Here you can configure the scoreboard, from the title to the lines you want them 
 # to have, you can use {players_count}, {player_ping}, {player_nick} to further 
 # customize your scoreboard
-scoreboard.title: &6&lGreek &r&f| &7Lobby-1
+scoreboard.title: §6§lGreek §r§7| §fLobby-1
 scoreboard.lines:
-  - ' &7---------------------'  
+  - '&7-------------------'  
   - ' &6Online:' 
-  - ' &r&f{players_count}'
+  - ' §r§f{players_count}'
   - '&7&r&b'
   - ' &6Nick:'
-  - ' &r&f{player_nick}'
+  - ' §r§f{player_nick}'
   - '&7&r'
   - ' &7greekmc.net'
-  - ' &7---------------------&r'
+  - '&7-------------------&r'
+
 
 
