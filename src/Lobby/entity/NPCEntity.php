@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lobby\entity;
 
 use Lobby\Main;
+use Lobby\utils\Utils;
 
 use pocketmine\entity\Human;
 use pocketmine\event\entity\EntityDamageEvent;
@@ -89,7 +90,7 @@ class NPCEntity extends Human
 
             if (isset($servers[$this->serverId])) {
                 $data = $servers[$this->serverId];
-                $this->setNameTag(TextFormat::colorize($data['server']));
+                $this->setNameTag(TextFormat::colorize($data['server'] . PHP_EOL . "&7Online: &f" . Utils::getServerPlayers($data['name'])));
            } else $this->setNameTag(TextFormat::colorize('&cERROR'));
         } else $this->setNameTag(TextFormat::colorize('&cERROR'));
         return $parent;
