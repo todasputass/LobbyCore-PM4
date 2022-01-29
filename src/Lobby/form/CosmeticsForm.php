@@ -3,6 +3,7 @@
 namespace Lobby\form;
 
 use Lobby\Main;
+use Lobby\form\ArmorForm;
 
 use cosmicpe\form\entries\simple\Button;
 use cosmicpe\form\SimpleForm;
@@ -24,6 +25,9 @@ class CosmeticsForm extends SimpleForm {
 		});
         $this->addButton(new Button("§6Fly\n§r§7Click to activate or deactivate the fly"), function(Player $player, int $index) {
 			$player->getServer()->dispatchCommand($player, "fly");
+		});
+		$this->addButton(new Button("§6CustomArmor\n§r§7Click to change your armor"), function(Player $player, int $index) {
+			$player->sendForm(new ArmorForm());
 		});
 	}
 }
