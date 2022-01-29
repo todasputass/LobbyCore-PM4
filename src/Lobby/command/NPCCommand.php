@@ -17,8 +17,9 @@ class NPCCommand extends Command{
         parent::__construct('npc', 'Use this command to place the NPCs of your server as you have created them in the config.yml');
         $this->setPermission('npc.lobby');
     }
-
+    
     public function execute(CommandSender $sender, string $commandLabel, array $args): void {
+        if (!$this->testPermission($sender)) return;
         if (!$sender instanceof Player)
             return;
         
