@@ -9,6 +9,7 @@ use Lobby\item\EnderPearlBuffItem;
 use Lobby\item\CosmeticsItem;
 use Lobby\Main;
 use Lobby\utils\Utils;
+
 use pocketmine\player\GameMode;
 use pocketmine\player\Player;
 use pocketmine\Server;
@@ -16,25 +17,32 @@ use pocketmine\utils\TextFormat;
 
 class Session {
     
-    /** @var int */
-    private int $current_ping;
-    
     /**
      * Session construct.
      * @param Player $player
      * @param SessionScoreboard $scoreboard
+     * @param bool $rainbowArmor
      */
     public function __construct(
         private Player $player,
-        private SessionScoreboard $scoreboard
-    ) {
-        $this->current_ping = $this->getPing();
+        private SessionScoreboard $scoreboard,
+        private bool $rainbowArmor = false
+    ) {}
+    
+    /**
+     * @return bool
+     */
+    public function isRainbowArmor(): bool {
+        return $this->rainbowArmor;
     }
-
-    private function getPing(): int {
-        return $this->player->getNetworkSession()->getPing() ?? 0;
+    
+    /**
+     * @param bool $value
+     */
+    public function setRainbowArmor(bool $value): void {
+        $this->rainbowArmor = $value;
     }
-
+    
     public function sendWelcomeMessages(): void {
         $config = Main::getInstance()->getConfig();
         $join_message = [
@@ -54,11 +62,14 @@ class Session {
     public function setup(): void {
         $hunger_manager = $this->player->getHungerManager();
         $hunger_manager->setFood($hunger_manager->getMaxFood());
+        
         $this->player->getInventory()->clearAll();
 		$this->player->getArmorInventory()->clearAll();
 		$this->player->getEffects()->clear();
+		
         $this->player->setGamemode(GameMode::ADVENTURE());
         $this->player->setHealth($this->player->getMaxHealth());
+        
         $this->player->getInventory()->setItem(8, new CosmeticsItem());
         $this->player->getInventory()->setItem(4, new ServerSelectorItem());
         $this->player->getInventory()->setItem(0, new EnderPearlBuffItem());
@@ -68,27 +79,22 @@ class Session {
         $this->player->teleport(Server::getInstance()->getWorldManager()->getDefaultWorld()->getSafeSpawn());
     }
 
-    public function checkPing(): bool {
-        $ping = $this->getPing();
-        if($this->current_ping !== $ping) {
-            $this->current_ping = $ping;
-            return true;
-        }
-        return false;
-    }
-
     public function initScoreboard(): void {
         $this->scoreboard->init();
     }
     
     public function update(): void {
-        $this->scoreboard->clear();
-
         $config = Main::getInstance()->getConfig();
+        
+        # Scoreboard
+        $this->scoreboard->clear();
         foreach($config->get('scoreboard.lines') as $content) {
             $content = str_replace(['{players_count}', '{player_ping}', '{player_nick}'], [Utils::getNetworkPlayers(), $this->player->getNetworkSession()->getPing(), $this->player->getName()], $content);
             $this->scoreboard->addLine(TextFormat::colorize($content));
         }
+        
+        # Cosmetics
+        if ($this->isRainbowArmor())
+            Utils::randomArmorColor($this->player);
     }
-
 }

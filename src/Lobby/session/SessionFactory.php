@@ -35,5 +35,4 @@ class SessionFactory
     static public function removeSession(Player $player): void {
         unset(self::$sessions[$player->getName()]);
     }
-
 }

@@ -3,7 +3,7 @@
 # places within your server automatically
 server-name: "§6§lGreek§8Network"
 
-Floating: "5:63:0"
+floating: "5:63:0"
 
 WebhookGamemodeLogs: "https://discord.com/api/webhooks/936993532089098372/ZfGMMgw9xcanBZokNxpG6bxUzwRwOSy4h6o34a60wdRjAzNqa9cuzfMWZHHpugrkjFOC"
 

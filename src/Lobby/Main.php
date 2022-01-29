@@ -62,6 +62,4 @@ class Main extends PluginBase {
     private function registerListener(Listener $listener): void {
         $this->getServer()->getPluginManager()->registerEvents($listener, $this);
     }
-
 }
-
