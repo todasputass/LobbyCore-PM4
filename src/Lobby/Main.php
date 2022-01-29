@@ -4,6 +4,7 @@ namespace Lobby;
 
 use Lobby\command\SpawnCommand;
 use Lobby\command\NPCCommand;
+use Lobby\command\FlyCommand;
 use Lobby\listener\EventListener;
 use Lobby\listener\ItemListener;
 use Lobby\listener\SessionListener;
