@@ -130,7 +130,7 @@ final class Utils {
                
                case 9:
                    $color = new Color(255, 255, 255);
-                   break;
+                   break;        
             }
             $player->getArmorInventory()->setContents([
                 $helmet->setCustomColor($color),
