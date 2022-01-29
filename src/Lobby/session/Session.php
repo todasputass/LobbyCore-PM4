@@ -86,7 +86,7 @@ class Session {
 
         $config = Main::getInstance()->getConfig();
         foreach($config->get('scoreboard.lines') as $content) {
-            $content = str_replace(['{players_count}', '{player_ping}', '{player_nick}', '{player_rank}'], [Utils::getNetworkPlayers(), $this->player->getNetworkSession()->getPing(), $this->player->getName(), Utils::getRank() ?? 'None'], $content);
+            $content = str_replace(['{players_count}', '{player_ping}', '{player_nick}'], [Utils::getNetworkPlayers(), $this->player->getNetworkSession()->getPing(), $this->player->getName()], $content);
             $this->scoreboard->addLine(TextFormat::colorize($content));
         }
     }

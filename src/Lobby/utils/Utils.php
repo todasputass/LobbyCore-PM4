@@ -51,16 +51,4 @@ final class Utils {
         }
         return $players;
     }
-    public function getRank(): int {
-        $plugin = Server::getInstance()->getPluginManager()->getPlugin("GreekRanks");
-        $player = $event->getPlayer
-        if ($player) {
-            $greekPlayer = Main::getInstance()->ranksManager->getPlayer($player);
-            if ($greekPlayer->getInformation() !== []) {
-                $rank = $greekPlayer->getRank() ? $greekPlayer->getRank()->getFormat()
-                return;
-            }
-        }
-    }
 }
-
