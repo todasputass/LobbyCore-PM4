@@ -24,9 +24,14 @@ use pocketmine\world\World;
 class Main extends PluginBase
 {
     use SingletonTrait;
+    public static array $colors;
 
+    /**
+     * @throws \JsonException
+     */
     protected function onLoad(): void
     {
+        self::$colors = json_decode(file_get_contents($this->getFile() . "resources/colors.json"), true, 512, JSON_THROW_ON_ERROR);
         self::setInstance($this);
     }
 
