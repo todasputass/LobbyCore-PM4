@@ -88,7 +88,7 @@ final class Utils {
             ($chestplate = $player->getArmorInventory()->getChestplate())->getId() === 299 &&
             ($leggings = $player->getArmorInventory()->getLeggings())->getId() === 300 &&
             ($boots = $player->getArmorInventory()->getBoots())->getId() === 301) {
-            $number = mt_rand(0, 9);
+            $number = mt_rand(0, 43);
             $color = new Color(255, 255, 255);
             
             switch ($number) {
