@@ -99,8 +99,8 @@ final class Utils
         return $rank ?? '§6Default';
     }
 
-    protected static $int_armor = 0;
-    private static array $armors;
+    protected static int $int_armor = 0;
+    private static array $armors = [];
 
     public function __construct()
     {
