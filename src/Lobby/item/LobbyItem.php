@@ -9,12 +9,13 @@ namespace Lobby\item;
 use pocketmine\item\Item;
 use pocketmine\item\ItemIdentifier;
 
-class LobbyItem extends Item {
+class LobbyItem extends Item
+{
 
-    public function __construct(ItemIdentifier $identifier, string $name) {
+    public function __construct(ItemIdentifier $identifier, string $name)
+    {
         $this->setCustomName($name);
         parent::__construct($identifier, $name);
         $this->getNamedTag()->setByte("lobby", 1);
     }
-
 }

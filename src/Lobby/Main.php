@@ -1,17 +1,16 @@
-<?php 
+<?php
 
 namespace Lobby;
 
-use Lobby\command\SpawnCommand;
-use Lobby\command\NPCCommand;
 use Lobby\command\FlyCommand;
 use Lobby\command\GamemodeCommand;
+use Lobby\command\NPCCommand;
+use Lobby\command\SpawnCommand;
+use Lobby\entity\NPCEntity;
 use Lobby\listener\EventListener;
 use Lobby\listener\ItemListener;
 use Lobby\listener\SessionListener;
 use Lobby\session\SessionFactory;
-use Lobby\entity\NPCEntity;
-
 use pocketmine\entity\EntityDataHelper;
 use pocketmine\entity\EntityFactory;
 use pocketmine\event\Listener;
@@ -22,16 +21,19 @@ use pocketmine\utils\SingletonTrait;
 use pocketmine\utils\TextFormat;
 use pocketmine\world\World;
 
-class Main extends PluginBase {
+class Main extends PluginBase
+{
     use SingletonTrait;
-    
-    protected function onLoad(): void {
+
+    protected function onLoad(): void
+    {
         self::setInstance($this);
     }
 
-    protected function onEnable(): void {
+    protected function onEnable(): void
+    {
         # Setup config
-        $this->saveResource("config.yml");             
+        $this->saveResource("config.yml");
         # Add a Custom MOTD
         $this->getServer()->getNetwork()->setName(TextFormat::colorize($this->getConfig()->get("server-motd")));
         # Register commands
@@ -39,6 +41,7 @@ class Main extends PluginBase {
         $this->getServer()->getCommandMap()->register('npc', new NPCCommand());
         $this->getServer()->getCommandMap()->register('fly', new FlyCommand());
         $this->getServer()->getCommandMap()->register('gm', new GamemodeCommand());
+
         # Register entity
         EntityFactory::getInstance()->register(NPCEntity::class, function (World $world, CompoundTag $nbt): NPCEntity {
             return new NPCEntity(EntityDataHelper::parseLocation($nbt, $world), NPCEntity::parseSkinNBT($nbt), $nbt);
@@ -51,15 +54,17 @@ class Main extends PluginBase {
 
         # Setup task
         $this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function (): void {
-            foreach (SessionFactory::getSessions() as $session)
+            foreach (SessionFactory::getSessions() as $session) {
                 $session->update();
+            }
         }), 1);
-        
+
         # Send message to the logger
         $this->getLogger()->info("LobbyCore Enabled");
     }
 
-    private function registerListener(Listener $listener): void {
+    private function registerListener(Listener $listener): void
+    {
         $this->getServer()->getPluginManager()->registerEvents($listener, $this);
     }
 }

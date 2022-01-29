@@ -4,36 +4,40 @@ declare(strict_types=1);
 
 namespace Lobby\command;
 
-use Lobby\Main;
-use Lobby\task\asynctask\DiscordMessage;
-
 use CortexPE\DiscordWebhookAPI\Embed;
 use CortexPE\DiscordWebhookAPI\Message;
 use CortexPE\DiscordWebhookAPI\Webhook;
-
+use Lobby\Main;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\player\GameMode;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
-use pocketmine\player\GameMode;
 
-class GamemodeCommand extends Command{
+class GamemodeCommand extends Command
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct('gm', 'Use this command to change your game mode');
         $this->setPermission('gm.lobby');
     }
-    
-    public function execute(CommandSender $sender, string $commandLabel, array $args): void {
-        if (!$this->testPermission($sender)) return;
-        if (!$sender instanceof Player)
+
+    public function execute(CommandSender $sender, string $commandLabel, array $args): void
+    {
+        if (!$this->testPermission($sender)) {
             return;
-        
+        }
+
+        if (!$sender instanceof Player) {
+            return;
+        }
+
         if (!isset($args[0])) {
             $sender->sendMessage(TextFormat::colorize('§r§cUse /gm (0|1|2|3])'));
             return;
         }
-        
+
         switch (strtolower($args[0])) {
             case '0':
                 if (!isset($args[1])) {
@@ -50,6 +54,7 @@ class GamemodeCommand extends Command{
                     $webhook->send($msg);
                     return;
                 }
+                break;
             case '1':
                 if (!isset($args[1])) {
                     $config = Main::getInstance()->getConfig();
@@ -65,6 +70,7 @@ class GamemodeCommand extends Command{
                     $webhook->send($msg);
                     return;
                 }
+                break;
             case '2':
                 if (!isset($args[1])) {
                     $config = Main::getInstance()->getConfig();
@@ -80,6 +86,7 @@ class GamemodeCommand extends Command{
                     $webhook->send($msg);
                     return;
                 }
+                break;
             case '3':
                 if (!isset($args[1])) {
                     $config = Main::getInstance()->getConfig();
@@ -94,7 +101,7 @@ class GamemodeCommand extends Command{
                     $msg->addEmbed($embed);
                     $webhook->send($msg);
                     return;
-            }
+                }
         }
     }
 }

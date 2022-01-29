@@ -9,33 +9,23 @@ use pocketmine\network\mcpe\protocol\SetDisplayObjectivePacket;
 use pocketmine\network\mcpe\protocol\SetScorePacket;
 use pocketmine\network\mcpe\protocol\types\ScorePacketEntry;
 use pocketmine\player\Player;
-use pocketmine\utils\TextFormat;
 
 class SessionScoreboard
 {
-    
+
     /** @var string */
     private string $title;
     /** @var ScorePacketEntry[] */
     private array $lines;
-    
+
     /** @var bool */
-    private bool $spawned;   
+    private bool $spawned;
     /** @var Player */
     private Player $player;
-    
-    /**
-     * @param Player $player
-     * @param string $title
-     * @return self
-     */
-    public static function create(Player $player, string $title): self
-    {
-        return new self($player, $title);
-    }
-    
+
     /**
      * SessionScoreboard construct.
+     *
      * @param Player $player
      * @param string $title
      */
@@ -46,7 +36,18 @@ class SessionScoreboard
         $this->spawned = false;
         $this->player = $player;
     }
-    
+
+    /**
+     * @param Player $player
+     * @param string $title
+     *
+     * @return self
+     */
+    public static function create(Player $player, string $title): self
+    {
+        return new self($player, $title);
+    }
+
     /**
      * @return bool
      */
@@ -55,18 +56,11 @@ class SessionScoreboard
         return $this->spawned;
     }
 
-    /**
-     * @return Player
-     */ 
-    public function getPlayer(): Player
-    {
-        return $this->player;
-    }
-     
     public function init(): void
     {
-        if ($this->spawned)
+        if ($this->spawned) {
             return;
+        }
         $pk = SetDisplayObjectivePacket::create(
             SetDisplayObjectivePacket::DISPLAY_SLOT_SIDEBAR,
             $this->player->getName(),
@@ -74,14 +68,23 @@ class SessionScoreboard
             'dummy',
             SetDisplayObjectivePacket::SORT_ORDER_ASCENDING
         );
-        $this->getPlayer()->getNetworkSession()->sendDataPacket($pk);    
+        $this->getPlayer()->getNetworkSession()->sendDataPacket($pk);
         $this->spawned = true;
     }
-    
+
+    /**
+     * @return Player
+     */
+    public function getPlayer(): Player
+    {
+        return $this->player;
+    }
+
     public function remove(): void
     {
-        if (!$this->spawned)
+        if (!$this->spawned) {
             return;
+        }
         $pk = RemoveObjectivePacket::create(
             $this->player->getName()
         );
@@ -90,13 +93,13 @@ class SessionScoreboard
     }
 
     /**
-     * @param string $line
+     * @param string   $line
      * @param int|null $id
      */
     public function addLine(string $line, ?int $id = null): void
     {
         $id = $id ?? count($this->lines);
-        
+
         $entry = new ScorePacketEntry();
         $entry->type = ScorePacketEntry::TYPE_FAKE_PLAYER;
 
@@ -134,7 +137,7 @@ class SessionScoreboard
             unset($this->lines[$id]);
         }
     }
-    
+
     public function clear(): void
     {
         $pk = new SetScorePacket();
