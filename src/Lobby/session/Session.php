@@ -54,6 +54,9 @@ class Session {
     public function setup(): void {
         $hunger_manager = $this->player->getHungerManager();
         $hunger_manager->setFood($hunger_manager->getMaxFood());
+        $this->player->getInventory()->clearAll();
+		$this->player->getArmorInventory()->clearAll();
+		$this->player->getEffects()->clear();
         $this->player->setGamemode(GameMode::ADVENTURE());
         $this->player->setHealth($this->player->getMaxHealth());
         $this->player->getInventory()->setItem(8, new CosmeticsItem());
