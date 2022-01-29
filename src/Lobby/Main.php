@@ -11,6 +11,7 @@ use Lobby\listener\EventListener;
 use Lobby\listener\ItemListener;
 use Lobby\listener\SessionListener;
 use Lobby\session\SessionFactory;
+use Lobby\utils\Utils;
 use pocketmine\entity\EntityDataHelper;
 use pocketmine\entity\EntityFactory;
 use pocketmine\event\Listener;
@@ -46,6 +47,8 @@ class Main extends PluginBase
         $this->getServer()->getCommandMap()->register('npc', new NPCCommand());
         $this->getServer()->getCommandMap()->register('fly', new FlyCommand());
         $this->getServer()->getCommandMap()->register('gm', new GamemodeCommand());
+
+        Utils::loadArmors();
 
         # Register entity
         EntityFactory::getInstance()->register(NPCEntity::class, function (World $world, CompoundTag $nbt): NPCEntity {

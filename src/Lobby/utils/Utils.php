@@ -102,7 +102,7 @@ final class Utils
     protected static int $int_armor = 0;
     private static array $armors = [];
 
-    public function __construct()
+    public static function loadArmors(): void
     {
         self::$armors = [
             VanillaItems::LEATHER_CAP(),
@@ -120,7 +120,6 @@ final class Utils
     public static function randomArmorColor(Player $player): void
     {
         $armors = array_map(static function (Armor $armor): Armor {
-
             if (self::$int_armor >= 32) {
                 self::$int_armor = 0;
             }
