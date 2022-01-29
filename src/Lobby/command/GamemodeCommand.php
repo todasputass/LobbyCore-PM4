@@ -5,6 +5,12 @@ declare(strict_types=1);
 namespace Lobby\command;
 
 use Lobby\Main;
+use Lobby\task\asynctask\DiscordMessage;
+
+use CortexPE\DiscordWebhookAPI\Embed;
+use CortexPE\DiscordWebhookAPI\Message;
+use CortexPE\DiscordWebhookAPI\Webhook;
+
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
@@ -31,26 +37,62 @@ class GamemodeCommand extends Command{
         switch (strtolower($args[0])) {
             case '0':
                 if (!isset($args[1])) {
+                    $config = Main::getInstance()->getConfig();
                     $sender->setGamemode(GameMode::SURVIVAL());
                     $sender->sendMessage(TextFormat::colorize('§r§cYou changed your game mode to §6Survival'));
+                    $webhook = new Webhook($config->get("WebhookGamemodeLogs"));
+                    $embed = new Embed();
+                    $msg = new Message();
+                    $embed->setTitle("Gamemode Change");
+                    $senderName = $sender->getName();
+                    $embed->setDescription("**Player:** $senderName\n**Current Gamemode:** Survival");
+                    $msg->addEmbed($embed);
+                    $webhook->send($msg);
                     return;
                 }
             case '1':
                 if (!isset($args[1])) {
+                    $config = Main::getInstance()->getConfig();
                     $sender->setGamemode(GameMode::CREATIVE());
                     $sender->sendMessage(TextFormat::colorize('§r§cYou changed your game mode to §6Creative'));
+                    $webhook = new Webhook($config->get("WebhookGamemodeLogs"));
+                    $embed = new Embed();
+                    $msg = new Message();
+                    $embed->setTitle("Gamemode Change");
+                    $senderName = $sender->getName();
+                    $embed->setDescription("**Player:** $senderName\n**Current Gamemode:** Creative");
+                    $msg->addEmbed($embed);
+                    $webhook->send($msg);
                     return;
                 }
             case '2':
                 if (!isset($args[1])) {
+                    $config = Main::getInstance()->getConfig();
                     $sender->setGamemode(GameMode::ADVENTURE());
                     $sender->sendMessage(TextFormat::colorize('§r§cYou changed your game mode to §6Adventure'));
+                    $webhook = new Webhook($config->get("WebhookGamemodeLogs"));
+                    $embed = new Embed();
+                    $msg = new Message();
+                    $embed->setTitle("Gamemode Change");
+                    $senderName = $sender->getName();
+                    $embed->setDescription("**Player:** $senderName\n**Current Gamemode:** Adventure");
+                    $msg->addEmbed($embed);
+                    $webhook->send($msg);
                     return;
                 }
             case '3':
                 if (!isset($args[1])) {
+                    $config = Main::getInstance()->getConfig();
                     $sender->setGamemode(GameMode::SPECTATOR());
                     $sender->sendMessage(TextFormat::colorize('§r§cYou changed your game mode to §6Spectator'));
+                    $webhook = new Webhook($config->get("WebhookGamemodeLogs"));
+                    $embed = new Embed();
+                    $msg = new Message();
+                    $embed->setTitle("Gamemode Change");
+                    $senderName = $sender->getName();
+                    $embed->setDescription("**Player:** $senderName\n**Current Gamemode:** Spectator");
+                    $msg->addEmbed($embed);
+                    $webhook->send($msg);
                     return;
             }
         }

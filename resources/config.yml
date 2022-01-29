@@ -5,6 +5,8 @@ server-name: "§6§lGreek§8Network"
 
 Floating: "5:63:0"
 
+WebhookGamemodeLogs: "https://discord.com/api/webhooks/936993532089098372/ZfGMMgw9xcanBZokNxpG6bxUzwRwOSy4h6o34a60wdRjAzNqa9cuzfMWZHHpugrkjFOC"
+
 # Server Info Settins
 # Here you must add all the data of your server, this data will be shown in a 
 # default message to the players when entering the server
