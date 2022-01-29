@@ -10,3 +10,6 @@ permissions:
   removenpc.lobby:
     description: Use for remove entity
     default: op
+  fly.lobby:
+    description: Use this command to get fly
+    default: op

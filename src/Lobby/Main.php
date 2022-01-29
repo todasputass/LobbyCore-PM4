@@ -35,6 +35,7 @@ class Main extends PluginBase {
         # Register commands
         $this->getServer()->getCommandMap()->register('spawn', new SpawnCommand());
         $this->getServer()->getCommandMap()->register('npc', new NPCCommand());
+        $this->getServer()->getCommandMap()->register('fly', new FlyCommand());
         # Register entity
         EntityFactory::getInstance()->register(NPCEntity::class, function (World $world, CompoundTag $nbt): NPCEntity {
             return new NPCEntity(EntityDataHelper::parseLocation($nbt, $world), NPCEntity::parseSkinNBT($nbt), $nbt);

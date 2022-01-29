@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace Lobby\item;
 
 
-use Lobby\form\ServersForm;
+use Lobby\form\CosmeticsForm;
 
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ItemIds;
@@ -21,7 +21,7 @@ class CosmeticsItem extends LobbyItem {
     }
 
     public function onClickAir(Player $player, Vector3 $directionVector): ItemUseResult {
-        $player->getServer()->dispatchCommand($player, "capes");
+        $player->sendForm(new CosmeticsForm());
         return ItemUseResult::SUCCESS();
     }
 
