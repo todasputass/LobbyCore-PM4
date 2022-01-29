@@ -83,6 +83,9 @@ class Session
         $this->scoreboard->init();
     }
 
+    /**
+     * @throws \Exception
+     */
     public function update(): void
     {
         $config = Main::getInstance()->getConfig();
@@ -96,10 +99,7 @@ class Session
 
         # Cosmetics
         if ($this->isRainbowArmor()) {
-            try {
-                Utils::randomArmorColor($this->player);
-            } catch (Exception $e) {
-            }
+            Utils::randomArmorColor($this->player);
         }
     }
 

@@ -28,12 +28,6 @@ class CosmeticsForm extends SimpleForm
                     $player->getArmorInventory()->clearAll();
                 } else {
                     $session->setRainbowArmor(true);
-                    $player->getArmorInventory()->setContents([
-                        ItemFactory::getInstance()->get(298),
-                        ItemFactory::getInstance()->get(299),
-                        ItemFactory::getInstance()->get(300),
-                        ItemFactory::getInstance()->get(301)
-                    ]);
                 }
             }
             //$player->getServer()->dispatchCommand($player, "cfa");
