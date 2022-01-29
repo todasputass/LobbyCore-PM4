@@ -19,6 +19,10 @@ class CosmeticsForm extends SimpleForm {
     public function __construct() {
 		parent::__construct("§r§7» §l§6Cosmetics §r§7«", "§r§7Select a cosmetic");
 		$this->addButton(new Button("§6RainbowArmor\n§r§7Click to activate or deactivate the Rainbow armor"), function(Player $player, int $index) {
+			if (!$player->hasPermission('rainbow.armor.permission')) {
+                //MESSAGE
+                return;
+            }
 			$session = SessionFactory::getSession($player);
 			
 			if ($session !== null) {
