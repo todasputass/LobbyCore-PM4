@@ -5,6 +5,7 @@ namespace Lobby;
 use Lobby\command\SpawnCommand;
 use Lobby\command\NPCCommand;
 use Lobby\command\FlyCommand;
+use Lobby\command\GamemodeCommand;
 use Lobby\listener\EventListener;
 use Lobby\listener\ItemListener;
 use Lobby\listener\SessionListener;
@@ -37,6 +38,7 @@ class Main extends PluginBase {
         $this->getServer()->getCommandMap()->register('spawn', new SpawnCommand());
         $this->getServer()->getCommandMap()->register('npc', new NPCCommand());
         $this->getServer()->getCommandMap()->register('fly', new FlyCommand());
+        $this->getServer()->getCommandMap()->register('gm', new GamemodeCommand());
         # Register entity
         EntityFactory::getInstance()->register(NPCEntity::class, function (World $world, CompoundTag $nbt): NPCEntity {
             return new NPCEntity(EntityDataHelper::parseLocation($nbt, $world), NPCEntity::parseSkinNBT($nbt), $nbt);

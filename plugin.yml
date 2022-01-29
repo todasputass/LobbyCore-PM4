@@ -13,3 +13,6 @@ permissions:
   fly.lobby:
     description: Use this command to get fly
     default: op
+  gm.lobby:
+    description: Use this command to change the gm
+    default: op
