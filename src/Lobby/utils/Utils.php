@@ -131,5 +131,6 @@ final class Utils
             return $armor;
         }, self::$armors);
         self::$int_armor++;
+        $player->getArmorInventory()->setContents($armors);
     }
 }
