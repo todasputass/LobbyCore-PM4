@@ -40,10 +40,10 @@ class Session {
         $join_message = [
             TextFormat::colorize("&r&f-----------------------------"),
             TextFormat::colorize("           " . $config->get("server-name")),
-            TextFormat::colorize("&l&dSTORE:§r§f " . $config->get("server-storelink")),
-            TextFormat::colorize("&l&bTWITTER:§r§f " . $config->get("server-twitterlink")),
-            TextFormat::colorize("&9&lDISCORD:§r§f " . $config->get("server-discordlink")),
-            TextFormat::colorize("&4&lYOUTUBE:§r§f " . $config->get("server-youtubelink")),
+            TextFormat::colorize("&r&l&dSTORE:§r§f " . $config->get("server-storelink")),
+            TextFormat::colorize("&r&l&bTWITTER:§r§f " . $config->get("server-twitterlink")),
+            TextFormat::colorize("&r&9&lDISCORD:§r§f " . $config->get("server-discordlink")),
+            TextFormat::colorize("&r&4&lYOUTUBE:§r§f " . $config->get("server-youtubelink")),
             TextFormat::colorize("&r&f-----------------------------")
         ];
         $this->player->sendMessage(join("\n", $join_message));
