@@ -42,8 +42,8 @@ class EventListener implements Listener
         $player->getServer()->getWorldManager()->getDefaultWorld()?->addParticle(new Vector3((int)$pos[0], (int)$pos[1] - 1, (int)$pos[2]), new FloatingTextParticle("", "§r§a§l25% OFF SALE"), [$player]);
         $player->getServer()->getWorldManager()->getDefaultWorld()?->addParticle(new Vector3((int)$pos[0], (int)$pos[1] - 1.25, (int)$pos[2]), new FloatingTextParticle("", "§r§6Activo por tiempo limitado!"), [$player]);
         $player->getServer()->getWorldManager()->getDefaultWorld()?->addParticle(new Vector3((int)$pos[0], (int)$pos[1] - 1.75, (int)$pos[2]), new FloatingTextParticle("", $config->get("server-storelink")), [$player]);
-        $bossbar = new BossBarAPI();
-        $bossbar->sendBossBar($player, TextFormat::colorize($config->get("scoreboard.title")), 0, "0", 0);
+        //$bossbar = new BossBarAPI();
+        //$bossbar->sendBossBar($player, TextFormat::colorize($config->get("scoreboard.title")), 0, "0", 0);
     }
 
     public function onQuit(PlayerQuitEvent $event): void
